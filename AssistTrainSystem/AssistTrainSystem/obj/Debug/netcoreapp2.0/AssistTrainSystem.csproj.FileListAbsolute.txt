@@ -1,0 +1,10 @@
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.deps.json
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.json
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.dev.json
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.dll
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csproj.CoreCompileInputs.cache
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfoInputs.cache
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfo.cs
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.dll
+c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.pdb
