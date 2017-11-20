@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using AssistTrainSystem.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace AssistTrainSystem
 {
@@ -25,6 +27,13 @@ namespace AssistTrainSystem
         {
             services.AddDbContext<SystemContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("SystemContext")));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                                    .AddCookie(options =>
+                              {
+                                    options.LoginPath = new PathString("/Users/Login");
+                                    options.AccessDeniedPath = new PathString("/denied");
+                              });
             services.AddMvc();
         }
 
@@ -42,6 +51,8 @@ namespace AssistTrainSystem
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

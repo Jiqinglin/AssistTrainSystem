@@ -13124,11 +13124,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "c:\\users\\administrator\\source\\repos\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem.csproj",
+      "projectUniqueName": "D:\\Asp.net_Core\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem.csproj",
       "projectName": "AssistTrainSystem",
-      "projectPath": "c:\\users\\administrator\\source\\repos\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem.csproj",
+      "projectPath": "D:\\Asp.net_Core\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\administrator\\source\\repos\\AssistTrainSystem\\AssistTrainSystem\\obj\\",
+      "outputPath": "D:\\Asp.net_Core\\AssistTrainSystem\\AssistTrainSystem\\AssistTrainSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

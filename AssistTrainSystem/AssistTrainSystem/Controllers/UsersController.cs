@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AssistTrainSystem.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AssistTrainSystem.Controllers
 {
@@ -17,27 +21,32 @@ namespace AssistTrainSystem.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "User")]
         // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
         }
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(string name, string password)
+        public async Task<IActionResult> Login(string name, string password, string returnUrl = null)
         {
             var user = await _context.User.SingleOrDefaultAsync(m => m.name == name & m.password == password);
             if(user!=null)
             {
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                identity.AddClaim(new Claim(ClaimTypes.Name, name));
+                identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
                 return RedirectToAction("Index", "Home");
             }
             return View();
         }
-            // GET: Users/Details/5
+        [Authorize(Roles = "User")]
+        // GET: Users/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -76,7 +85,7 @@ namespace AssistTrainSystem.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
+        [Authorize(Roles = "User")]
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -92,7 +101,7 @@ namespace AssistTrainSystem.Controllers
             }
             return View(user);
         }
-
+        [Authorize(Roles = "User")]
         // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -127,7 +136,7 @@ namespace AssistTrainSystem.Controllers
             }
             return View(user);
         }
-
+        [Authorize(Roles = "User")]
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
@@ -145,7 +154,7 @@ namespace AssistTrainSystem.Controllers
 
             return View(user);
         }
-
+        [Authorize(Roles = "User")]
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

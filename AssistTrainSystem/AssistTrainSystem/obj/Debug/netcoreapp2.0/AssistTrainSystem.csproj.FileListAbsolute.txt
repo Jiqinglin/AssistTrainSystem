@@ -8,3 +8,15 @@ c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debu
 c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.pdb
 c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.dll
 c:\users\administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+C:\Users\Administrator\source\repos\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csprojResolveAssemblyReference.cache
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.deps.json
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.json
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.dev.json
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.dll
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csproj.CoreCompileInputs.cache
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfoInputs.cache
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfo.cs
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.dll
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+D:\Asp.net_Core\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csprojResolveAssemblyReference.cache
