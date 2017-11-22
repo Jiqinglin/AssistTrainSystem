@@ -31,6 +31,13 @@ namespace AssistTrainSystem.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> Logout()
+        {
+            //注销用户
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Users");
+
+        }
         [HttpPost]
         public async Task<IActionResult> Login(string name, string password, string returnUrl = null)
         {

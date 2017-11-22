@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AssistTrainSystem.Models;
 
 namespace AssistTrainSystem.Models
 {
@@ -18,5 +19,6 @@ namespace AssistTrainSystem.Models
         {
             modelBuilder.Entity<User>().ToTable("User");
         }
+        public DbSet<AssistTrainSystem.Models.BodyAbility> BodyAbility { get; set; }
     }
 }
