@@ -85,31 +85,36 @@
                                 <input type="hidden" id="user_id" name="user_id"  value="@User.Identity.Name">
 
                                 <div class="form-group">
-                                    <label  id="height" name="height" class="control-label">身高</label>
+                                    <label  id="height2" name="height2" class="control-label">身高</label>
                                     <input  id="height" name="height" class="form-control" />
 
                                 </div>
 								
                                 <div class="form-group">
-                                    <label  id="weight" name="weight" class="control-label">体重</label>
+                                    <label  id="weight2" name="weight2" class="control-label">体重</label>
                                     <input  id="weight" name="weight" class="form-control" />
                                    
                                 </div>
 								
                                 <div class="form-group">
-                                    <label id="age" name="age" class="control-label">年龄</label>
+                                    <label id="age2" name="age2" class="control-label">年龄</label>
                                     <input id="age" name="age"  class="form-control" />
                                    
                                 </div>
 								
                                 <div class="form-group">
-                                    <label id="waist" name="waist" class="control-label">腰围</label>
+                                    <label id="waist2" name="waist2" class="control-label">腰围</label>
                                     <input id="waist" name="waist" class="form-control" />
                                    
                                 </div>
 
-                                <div class="form-group">
-                                    <input  value="Save" onclick="fun()" class="btn btn-default" />
+                                <div class="form-group" style="display:inline">
+                                    <input  value="保存" onclick="fun()" class="btn btn-default" style="width:149px"/>
+									<input  value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                                </div>
+
+								 <div class="form-group">
+                                    
                                 </div>
 								<script type="text/javascript">
 
@@ -234,6 +239,35 @@
                                     });
                                         
                                     }
+							function fun2()
+										{
+										    var height=$("#height").val();
+										    var weight=$("#weight").val();
+										    var waist=$("#waist").val();
+										    
+										    var bfp = (waist * 0.74 - (weight * 0.082 + 44.74)) / weight;
+                                            bfp = bfp * 100;
+										    var bmi = 1.0*weight/(height*height);
+
+										     myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,bmi]
+                                         }]
+                                            
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,bfp]
+                                         }]
+                                            
+                                    });
+										}
                                 </script>
                           
                         </div>
@@ -249,7 +283,7 @@
                             <h3 class="panel-title">您在今年的体质变化</h3>
                         </div>
                         <div class="panel-body" >
-                            <div id="main2" style="width: 600px;height:350px;"></div>
+                            <div id="main2" style="width: 680px;height:350px;"></div>
 							<script type="text/javascript">
 
 								var time = new Array();
