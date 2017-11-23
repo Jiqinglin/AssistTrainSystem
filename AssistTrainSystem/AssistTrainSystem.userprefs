@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{8E1A8F5F-99BF-4302-A04D-C95E0EEDABC4}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AssistTrainSystem/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="AssistTrainSystem/Views/Home/Index.cshtml" Line="1" Column="1" />
+      <File FileName="AssistTrainSystem/Views/BodyAbilities/Index.cshtml" Line="157" Column="23" />
+      <File FileName="AssistTrainSystem/Models/BodyAbility.cs" Line="26" Column="37" />
+      <File FileName="AssistTrainSystem/Controllers/BodyAbilitiesController.cs" Line="24" Column="13" />
+      <File FileName="AssistTrainSystem/appsettings.json" Line="12" Column="1" />
+      <File FileName="AssistTrainSystem/Program.cs" Line="26" Column="1" />
+      <File FileName="AssistTrainSystem/Controllers/HomeController.cs" Line="31" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AssistTrainSystem PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

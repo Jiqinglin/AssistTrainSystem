@@ -1,4 +1,4 @@
-﻿@model AssistTrainSystem.Controllers.BodyAbilitiesController.UserAbility
+﻿@model AssistTrainSystem.Controllers.BodyAbilitiesController.BodyList
 @{
     ViewData["Title"] = "Index";
 }
@@ -79,335 +79,295 @@
                             <h3 class="panel-title">请输入测试参数</h3>
                         </div>
                         <div class="panel-body">
-                            <form asp-action="Create">
+                            <form asp-action="Create" id="formData">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" id="ID" name="ID" />
-                                <input type="hidden" id="user_id" name="user_id"  value="@Model.user.name">
+                                <input type="hidden" id="user_id" name="user_id"  value="@User.Identity.Name">
 
                                 <div class="form-group">
-                                    <label  id="height" name="height" class="control-label"></label>
+                                    <label  id="height" name="height" class="control-label">身高</label>
                                     <input  id="height" name="height" class="form-control" />
-                                    <span asp-validation-for="bodyAbility[0].height" class="text-danger"></span>
+
                                 </div>
+								
                                 <div class="form-group">
-                                    <label  id="weight" name="weight" class="control-label"></label>
+                                    <label  id="weight" name="weight" class="control-label">体重</label>
                                     <input  id="weight" name="weight" class="form-control" />
-                                    <span asp-validation-for="bodyAbility[0].weight" class="text-danger"></span>
+                                   
                                 </div>
+								
                                 <div class="form-group">
-                                    <label id="age" name="age" class="control-label"></label>
+                                    <label id="age" name="age" class="control-label">年龄</label>
                                     <input id="age" name="age"  class="form-control" />
-                                    <span asp-validation-for="bodyAbility[0].age" class="text-danger"></span>
+                                   
                                 </div>
+								
                                 <div class="form-group">
-                                    <label id="waist" name="waist" class="control-label"></label>
+                                    <label id="waist" name="waist" class="control-label">腰围</label>
                                     <input id="waist" name="waist" class="form-control" />
-                                    <span asp-validation-for="bodyAbility[0].waist" class="text-danger"></span>
+                                   
                                 </div>
 
-
                                 <div class="form-group">
-                                    <input type="submit" value="Save" class="btn btn-default" />
+                                    <input  value="Save" onclick="fun()" class="btn btn-default" />
+                                </div>
+								<script type="text/javascript">
+
+                                </script>
+								<div>
+									   <p>系统建议：</p>
+									    <div style="height:116px">
+										</div>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                 <div class="col-md-6">
+					<div class="row">
+                <div class="col-md-10" >
+					
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
                             <h3 class="panel-title">测试结果</h3>
                         </div>
-                        <div class="panel-body" >
-                            <div id="main" style="width: 600px;height:400px;"></div>
+                        <div class="panel-body" style="display:inline" >
+
+									<div class="row">
+								
+                            <div id="main" class="col-md-10" style="width: 380px;height:240px;"></div>
+						    <div id="main3" class="col-md-10" style="width:380px;height:240px;"></div>
+									</div>
+							<script type="text/javascript">
+							      // 基于准备好的dom，初始化echarts实例
+                         var myChart = echarts.init(document.getElementById('main'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: 'BMI'
+            },
+            tooltip: {},
+            legend: {
+              
+            },
+            xAxis: {
+                data: ["上一次BMI","当前BMI"]
+            },
+            yAxis: {
+			
+										},
+            series: [{
+                name: 'BMI',
+                type: 'bar',
+                data: [@Model.lastlist.bmi]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+								</script>
+
+									
                             <script type="text/javascript">
-                              
-                                var myChart = echarts.init(document.getElementById('main'));
-                                var listtime = new Array();
-                                var listitem = new Array();
-                                var series = new Array();
-                                for (i = 0; i < 10; i++)
-                                {
-                                    series[i] = new Array();
-                                    for (j = 0; j < 10; j++)
+                                  // 基于准备好的dom，初始化echarts实例
+                         var myChart2 = echarts.init(document.getElementById('main3'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: '体脂率%'
+            },
+            tooltip: {},
+            legend: {
+                
+            },
+            xAxis: {
+                data: ["上一次体脂率","当前体脂率"]
+            },
+            yAxis: {
+		
+										
+			        axisLabel: {
+                formatter: '{value}%'
+            }
+
+										},
+            series: [{
+                name: '体脂率',
+                type: 'bar',
+                data: [@Model.lastlist.bfp]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option);
+
+						  function fun()
                                     {
-                                        series[i][j] = new Array();
+                                        var data = $("#formData").serialize();
+                                       
+                                
 
+                                        $.post("/BodyAbilities/Create",data,function(data){
+
+                                        myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,data.bmi]
+                                         }]
+                                            
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,data.bfp]
+                                         }]
+                                            
+                                    });
+                                    
+                                           
+                                    });
+                                        
                                     }
-
-                                }
-
-
-                                @foreach(var x in Model.listtime)
-                                {
-                                    <text>
-                                         listtime.push('@x');
-                                    </text>
-
-                                }
-
-
-                                @foreach(var x in Model.listitem)
-                                {
-                                    <text>
-                                         listitem.push('@x');
-                                    </text>
-
-                                }
-
-                                 @for(var x=0;x<Model.series.Count;x++)
-                                {
-                                    @for(var y=0;y<Model.series[x].Count;y++)
-                                    {
-                                        @for(var z=0;z<Model.series[x][y].Count;z++)
-                                        {
-                                            <text>
-                                                series[@x][@y][@z]='@Model.series[x][y][z]';
-                                            </text>
-
-                                        }
-
-                                    }
-
-                                }
-                                              
-
-                                    var itemStyle = {
-                                        normal: {
-                                        opacity: 0.8,
-                                            shadowBlur: 10,
-                                            shadowOffsetX: 0,
-                                            shadowOffsetY: 0,
-                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                        }
-                                };
-
-                                    var sizeFunction = function (x) {
-                                        var y = Math.sqrt(x / 5e8) + 0.1;
-                                        return y * 80;
-                                    };
-                                    // Schema:
-                                    var schema = [
-                                        { name: 'Income', index: 0, text: '人均收入', unit: '美元' },
-                                        { name: 'LifeExpectancy', index: 1, text: '人均寿命', unit: '岁' },
-                                        { name: 'Population', index: 2, text: '总人口', unit: '' },
-                                        { name: 'Country', index: 3, text: '国家', unit: '' }
-                                    ];
-
-                                    option = {
-                                        baseOption: {
-                                            timeline: {
-                                                axisType: 'category',
-                                                orient: 'vertical',
-                                                autoPlay: true,
-                                                inverse: true,
-                                                playInterval: 1000,
-                                                left: null,
-                                                right: 0,
-                                                top: 20,
-                                                bottom: 20,
-                                                width: 55,
-                                                height: null,
-                                                label: {
-                                                    normal: {
-                                                        textStyle: {
-                                                            color: '#999'
-                                                        }
-                                                    },
-                                                    emphasis: {
-                                                        textStyle: {
-                                                            color: '#fff'
-                                                        }
-                                                    }
-                                                },
-                                                symbol: 'none',
-                                                lineStyle: {
-                                                    color: '#555'
-                                                },
-                                                checkpointStyle: {
-                                                    color: '#bbb',
-                                                    borderColor: '#777',
-                                                    borderWidth: 2
-                                                },
-                                                controlStyle: {
-                                                    showNextBtn: false,
-                                                    showPrevBtn: false,
-                                                    normal: {
-                                                        color: '#666',
-                                                        borderColor: '#666'
-                                                    },
-                                                    emphasis: {
-                                                        color: '#aaa',
-                                                        borderColor: '#aaa'
-                                                    }
-                                                },
-                                                data: []
-                                            },
-                                            backgroundColor: '#404a59',
-                                            title: [{
-                                                text: listtime[0],
-                                                textAlign: 'center',
-                                                left: '63%',
-                                                top: '55%',
-                                                textStyle: {
-                                                    fontSize: 100,
-                                                    color: 'rgba(255, 255, 255, 0.7)'
-                                                }
-                                            }, {
-                                                text: '部队身体素质总揽',
-                                                left: 'center',
-                                                top: 10,
-                                                textStyle: {
-                                                    color: '#aaa',
-                                                    fontWeight: 'normal',
-                                                    fontSize: 20
-                                                }
-                                            }],
-                                            tooltip: {
-                                                padding: 5,
-                                                backgroundColor: '#222',
-                                                borderColor: '#777',
-                                                borderWidth: 1,
-                                                formatter: function (obj) {
-                                                    var value = obj.value;
-                                                    return schema[3].text + '：' + value[3] + '<br>'
-                                                        + schema[1].text + '：' + value[1] + schema[1].unit + '<br>'
-                                                        + schema[0].text + '：' + value[0] + schema[0].unit + '<br>'
-                                                        + schema[2].text + '：' + value[2] + '<br>';
-                                                }
-                                            },
-                                            grid: {
-                                                top: 100,
-                                                containLabel: true,
-                                                left: 30,
-                                                right: '110'
-                                            },
-                                            xAxis: {
-                                                type: 'value',
-                                                name: '体脂率%',
-                                                max: 40,
-                                                min: 5,
-                                                splitNumber: 10,
-                                              
-                                                nameTextStyle: {
-                                                    fontSize: 18
-                                                },
-                                                splitLine: {
-                                                    show: false
-                                                },
-                                                axisLine: {
-                                                    lineStyle: {
-                                                        color: '#ccc'
-                                                    }
-                                                },
-                                                axisLabel: {
-                                                    formatter: '{value} %'
-                                                }
-                                            },
-                                            yAxis: {
-                                                type: 'value',
-                                                name: 'BMI',
-                                                max: 100,
-                                                nameTextStyle: {
-                                                    color: '#ccc',
-                                                    fontSize: 18
-                                                },
-                                                axisLine: {
-                                                    lineStyle: {
-                                                        color: '#ccc'
-                                                    }
-                                                },
-                                                splitLine: {
-                                                    show: false
-                                                },
-                                                axisLabel: {
-                                                    formatter: '{value} '
-                                                }
-                                            },
-                                            visualMap: [
-                                                {
-                                                    show: false,
-                                                    dimension: 3,
-                                                    categories: listitem,
-                                                    calculable: true,
-                                                    precision: 0.1,
-                                                    textGap: 30,
-                                                    textStyle: {
-                                                        color: '#ccc'
-                                                    },
-                                                    inRange: {
-                                                        color: (function () {
-                                                            var colors = ['#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a'];
-                                                            return colors.concat(colors);
-                                                        })()
-                                                    }
-                                                }
-                                            ],
-                                            series: [
-                                                {
-                                                    type: 'scatter',
-                                                    itemStyle: itemStyle,
-                                                    data: series[0],
-                                                    symbolSize: function (val) {
-                                                        return sizeFunction(val[2]);
-                                                    }
-                                                }
-                                            ],
-                                            animationDurationUpdate: 1000,
-                                            animationEasingUpdate: 'quinticInOut'
-                                        },
-                                        options: []
-                                    };
-
-                                    for (var n = 0; n <listtime.length; n++) {
-                                        option.baseOption.timeline.data.push(listtime[n]);
-                                        option.options.push({
-                                            title: {
-                                                show: true,
-                                                'text': listtime[n] + ''
-                                            },
-                                            series: {
-                                                name: listtime[n],
-                                                type: 'scatter',
-                                                itemStyle: itemStyle,
-                                                data: series[n],
-                                                symbolSize: function (val) {
-                                                    return sizeFunction(val[2]);
-                                                }
-                                            }
-                                        });
-                                    }
-
-                                    myChart.setOption(option);
-
-
-                            </script>
-                            </div>
+                                </script>
+                          
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-5">
+				 
+               </div>
+                </div>
+                <div class="col-md-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">您的上次测试结果</h3>
                         </div>
-                        <div class="panel-body">
-                            这是一个基本的面板
+                        <div class="panel-body" >
+                            <div id="main2" style="width: 600px;height:350px;"></div>
+							<script type="text/javascript">
+
+								var time = new Array();
+								var bfp =new Array();
+								var bmi = new Array();
+								 @foreach(var x in Model.time)
+                                {
+                                    <text>
+                                         time.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bfp)
+                                {
+                                    <text>
+                                         bfp.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bmi)
+                                {
+                                    <text>
+                                         bmi.push('@x');
+                                    </text>
+
+                                }
+								 var app = echarts.init(document.getElementById('main2'));
+								app.title = '多 Y 轴示例';
+
+var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+option = {
+    color: colors,
+
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    grid: {
+        right: '20%'
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data:['BMI','体脂率']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            data: time
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'BMI',
+            min: 10,
+            max: 90,
+            position: 'right',
+            axisLine: {
+                lineStyle: {
+                    color: colors[0]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} '
+            }
+        },
+        {
+            type: 'value',
+            name: '体脂率',
+            min: 10,
+            max: 90,
+            position: 'left',
+           
+            axisLine: {
+                lineStyle: {
+                    color: colors[1]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+       
+    ],
+    series: [
+        {
+            name:'BMI',
+            type:'bar',
+            data: bmi
+        },
+        {
+            name:'体脂率',
+            type:'bar',
+            yAxisIndex: 1,
+            data:bfp
+        }
+       
+    ]
+};
+							 app.setOption(option);
+
+						    </script>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">系统建议</h3>
-                        </div>
-                        <div class="panel-body">
-                            这是一个基本的面板
-                        </div>
-                    </div>
-                </div>
+              
             </div>
             <hr>
             <h2 id="section-2">基础体能训练</h2>
