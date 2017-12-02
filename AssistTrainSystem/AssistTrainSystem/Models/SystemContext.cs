@@ -21,5 +21,6 @@ namespace AssistTrainSystem.Models
         }
         public DbSet<AssistTrainSystem.Models.BodyAbility> BodyAbility { get; set; }
         public DbSet<AssistTrainSystem.Models.EnergyAbility> EnergyAbility { get; set; }
+        public DbSet<AssistTrainSystem.Models.Horbara_Score> Horbara_Score { get; set; }
     }
 }

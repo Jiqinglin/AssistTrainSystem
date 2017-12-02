@@ -11,9 +11,10 @@ using System;
 namespace AssistTrainSystem.Migrations
 {
     [DbContext(typeof(SystemContext))]
-    partial class SystemContextModelSnapshot : ModelSnapshot
+    [Migration("20171202150407_update5")]
+    partial class update5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,16 +89,14 @@ namespace AssistTrainSystem.Migrations
 
             modelBuilder.Entity("AssistTrainSystem.Models.Horbara_Score", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("age")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("age");
 
                     b.Property<int>("num");
 
                     b.Property<int>("score");
 
-                    b.HasKey("ID");
+                    b.HasKey("age");
 
                     b.ToTable("Horbara_Score");
                 });

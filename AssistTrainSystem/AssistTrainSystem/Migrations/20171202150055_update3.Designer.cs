@@ -11,9 +11,10 @@ using System;
 namespace AssistTrainSystem.Migrations
 {
     [DbContext(typeof(SystemContext))]
-    partial class SystemContextModelSnapshot : ModelSnapshot
+    [Migration("20171202150055_update3")]
+    partial class update3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,22 +85,6 @@ namespace AssistTrainSystem.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("EnergyAbility");
-                });
-
-            modelBuilder.Entity("AssistTrainSystem.Models.Horbara_Score", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("age");
-
-                    b.Property<int>("num");
-
-                    b.Property<int>("score");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Horbara_Score");
                 });
 
             modelBuilder.Entity("AssistTrainSystem.Models.User", b =>

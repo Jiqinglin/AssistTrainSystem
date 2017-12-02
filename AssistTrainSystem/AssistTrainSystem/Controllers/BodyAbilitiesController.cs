@@ -21,6 +21,13 @@ namespace AssistTrainSystem.Controllers
         // GET: BodyAbilities
         public async Task<IActionResult> Index()
         {
+         
+            return View();
+        }
+
+        public async Task<IActionResult> Index2()
+        {
+
             var bodyAbility = from bb in _context.BodyAbility select bb;
             bodyAbility = bodyAbility.Where(m => m.user_id == User.Identity.Name);
             List<BodyAbility> b = await bodyAbility.AsNoTracking().ToListAsync();
@@ -30,13 +37,12 @@ namespace AssistTrainSystem.Controllers
             list.alllist = b;
             list.lastlist = lastAbilit;
 
-            foreach(var x in b)
+            foreach (var x in b)
             {
                 list.time.Add(x.create_time.ToString("MM-dd"));
                 list.bfp.Add(x.bfp.ToString());
                 list.bmi.Add(x.bmi.ToString());
             }
-            
             return View(list);
         }
         public class BodyList

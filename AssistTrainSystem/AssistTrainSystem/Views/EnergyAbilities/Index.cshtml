@@ -1,119 +1,356 @@
 ﻿@model IEnumerable<AssistTrainSystem.Models.EnergyAbility>
-
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LeftMenu.cshtml";
 }
+<script src="~/js/echarts.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">请输入测试参数</h3>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="formData">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="ID" name="ID" />
+                    <input type="hidden" id="user_id" name="user_id" value="@User.Identity.Name">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.user_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.create_time)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.horbara_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.horbara_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.horbarb_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.horbarb_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.doubara_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.doubara_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.doubarb_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.doubarb_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pushup_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pushup_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.situp_num)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.situp_score)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.score)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.user_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.create_time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.horbara_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.horbara_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.horbarb_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.horbarb_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.doubara_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.doubara_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.doubarb_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.doubarb_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pushup_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.pushup_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.situp_num)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.situp_score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.score)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    <div class="form-group">
+                        <label id="height2" name="height2" class="control-label">单杠一练习</label>
+                        <input id="height" name="height" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="weight2" name="weight2" class="control-label">单杠二练习</label>
+                        <input id="weight" name="weight" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="age2" name="age2" class="control-label">双杠一练习</label>
+                        <input id="age" name="age" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="waist2" name="waist2" class="control-label">双杠二练习</label>
+                        <input id="waist" name="waist" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="waist2" name="waist2" class="control-label">俯卧撑</label>
+                        <input id="waist" name="waist" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="waist2" name="waist2" class="control-label">仰卧起坐</label>
+                        <input id="waist" name="waist" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="waist2" name="waist2" class="control-label">年龄</label>
+                        <input id="waist" name="waist" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group" style="display:inline">
+                        <input value="保存" onclick="fun()" class="btn btn-default" style="width:149px" />
+                        <input value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                    </div>
+
+                    <div class="form-group">
+
+                    </div>
+                    <script type="text/javascript">
+
+                    </script>
+                    <div>
+                        <p>系统建议：</p>
+                        <div style="height:116px">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">测试结果</h3>
+                    </div>
+                    <div class="panel-body" style="display:inline">
+
+                        <div class="row">
+
+                            <div id="main" class="col-md-10" style="width: 380px;height:240px;"></div>
+                            <div id="main3" class="col-md-10" style="width:380px;height:240px;"></div>
+                        </div>
+                        <script type="text/javascript">
+							      // 基于准备好的dom，初始化echarts实例
+                         var myChart = echarts.init(document.getElementById('main'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: 'BMI'
+            },
+            tooltip: {},
+            legend: {
+
+            },
+            xAxis: {
+                data: ["上一次BMI","当前BMI"]
+            },
+            yAxis: {
+
+										},
+            series: [{
+                name: 'BMI',
+                type: 'bar',
+                data: [@Model.lastlist.bmi]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+                        </script>
+
+
+                        <script type="text/javascript">
+                                  // 基于准备好的dom，初始化echarts实例
+                         var myChart2 = echarts.init(document.getElementById('main3'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: '体脂率%'
+            },
+            tooltip: {},
+            legend: {
+
+            },
+            xAxis: {
+                data: ["上一次体脂率","当前体脂率"]
+            },
+            yAxis: {
+
+
+			        axisLabel: {
+                formatter: '{value}%'
+            }
+
+										},
+            series: [{
+                name: '体脂率',
+                type: 'bar',
+                data: [@Model.lastlist.bfp]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option);
+
+						  function fun()
+                                    {
+                                        var data = $("#formData").serialize();
+
+
+
+                                        $.post("/BodyAbilities/Create",data,function(data){
+
+                                        myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,data.bmi]
+                                         }]
+
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,data.bfp]
+                                         }]
+
+                                    });
+
+
+                                    });
+
+                                    }
+							function fun2()
+										{
+										    var height=$("#height").val();
+										    var weight=$("#weight").val();
+										    var waist=$("#waist").val();
+
+										    var bfp = (waist * 0.74 - (weight * 0.082 + 44.74)) / weight;
+                                            bfp = bfp * 100;
+										    var bmi = 1.0*weight/(height*height);
+
+										     myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,bmi]
+                                         }]
+
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,bfp]
+                                         }]
+
+                                    });
+										}
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">您在今年的体质变化</h3>
+            </div>
+            <div class="panel-body">
+                <div id="main2" style="width: 680px;height:350px;"></div>
+                <script type="text/javascript">
+
+								var time = new Array();
+								var bfp =new Array();
+								var bmi = new Array();
+								 @foreach(var x in Model.time)
+                                {
+                                    <text>
+                                         time.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bfp)
+                                {
+                                    <text>
+                                         bfp.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bmi)
+                                {
+                                    <text>
+                                         bmi.push('@x');
+                                    </text>
+
+                                }
+								 var app = echarts.init(document.getElementById('main2'));
+								app.title = '多 Y 轴示例';
+
+var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+option = {
+    color: colors,
+
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    grid: {
+        right: '20%'
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data:['BMI','体脂率']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            data: time
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'BMI',
+            min: 10,
+            max: 90,
+            position: 'right',
+            axisLine: {
+                lineStyle: {
+                    color: colors[0]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} '
+            }
+        },
+        {
+            type: 'value',
+            name: '体脂率',
+            min: 10,
+            max: 90,
+            position: 'left',
+
+            axisLine: {
+                lineStyle: {
+                    color: colors[1]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+
+    ],
+    series: [
+        {
+            name:'BMI',
+            type:'bar',
+            data: bmi
+        },
+        {
+            name:'体脂率',
+            type:'bar',
+            yAxisIndex: 1,
+            data:bfp
+        }
+
+    ]
+};
+							 app.setOption(option);
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+</div>
