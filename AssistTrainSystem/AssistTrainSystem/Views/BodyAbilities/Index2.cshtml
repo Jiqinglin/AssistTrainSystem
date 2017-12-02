@@ -1,0 +1,419 @@
+﻿@model AssistTrainSystem.Controllers.BodyAbilitiesController.BodyList
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/echarts.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<style>
+    /* Custom Styles */
+    ul.nav-tabs {
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+
+        ul.nav-tabs li {
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+
+            ul.nav-tabs li:first-child {
+                border-top: none;
+            }
+
+            ul.nav-tabs li a {
+                margin: 0;
+                padding: 8px 16px;
+                border-radius: 0;
+            }
+
+            ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+                color: #fff;
+                background: #0088cc;
+                border: 1px solid #0088cc;
+            }
+
+            ul.nav-tabs li:first-child a {
+                border-radius: 4px 4px 0 0;
+            }
+
+            ul.nav-tabs li:last-child a {
+                border-radius: 0 0 4px 4px;
+            }
+
+        ul.nav-tabs.affix {
+            top: 30px; /* Set the top position of pinned element */
+        }
+</style>
+<script>
+
+    $(document).ready(function () {
+        $("#myNav").affix({
+            offset: {
+                top: 125
+            }
+        });
+    });
+</script>
+<div class="container">
+    <div class="jumbotron">
+        <h1>人员自测模块</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" id="myNav">
+                <li class="active"><a href="#section-1">人员信息测试</a></li>
+                <li><a href="#section-2">基础体能训练</a></li>
+                <li><a href="#section-3">实用技能训练</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-9">
+            <h2 id="section-1">基本人员信息测试</h2>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">请输入测试参数</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form asp-action="Create" id="formData">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" id="ID" name="ID" />
+                                <input type="hidden" id="user_id" name="user_id"  value="@User.Identity.Name">
+
+                                <div class="form-group">
+                                    <label  id="height2" name="height2" class="control-label">身高</label>
+                                    <input  id="height" name="height" class="form-control" />
+
+                                </div>
+								
+                                <div class="form-group">
+                                    <label  id="weight2" name="weight2" class="control-label">体重</label>
+                                    <input  id="weight" name="weight" class="form-control" />
+                                   
+                                </div>
+								
+                                <div class="form-group">
+                                    <label id="age2" name="age2" class="control-label">年龄</label>
+                                    <input id="age" name="age"  class="form-control" />
+                                   
+                                </div>
+								
+                                <div class="form-group">
+                                    <label id="waist2" name="waist2" class="control-label">腰围</label>
+                                    <input id="waist" name="waist" class="form-control" />
+                                   
+                                </div>
+
+                                <div class="form-group" style="display:inline">
+                                    <input  value="保存" onclick="fun()" class="btn btn-default" style="width:149px"/>
+									<input  value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                                </div>
+
+								 <div class="form-group">
+                                    
+                                </div>
+								<script type="text/javascript">
+
+                                </script>
+								<div>
+									   <p>系统建议：</p>
+									    <div style="height:116px">
+										</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6">
+					<div class="row">
+                <div class="col-md-10" >
+					
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <h3 class="panel-title">测试结果</h3>
+                        </div>
+                        <div class="panel-body" style="display:inline" >
+
+									<div class="row">
+								
+                            <div id="main" class="col-md-10" style="width: 380px;height:240px;"></div>
+						    <div id="main3" class="col-md-10" style="width:380px;height:240px;"></div>
+									</div>
+							<script type="text/javascript">
+							      // 基于准备好的dom，初始化echarts实例
+                         var myChart = echarts.init(document.getElementById('main'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: 'BMI'
+            },
+            tooltip: {},
+            legend: {
+              
+            },
+            xAxis: {
+                data: ["上一次BMI","当前BMI"]
+            },
+            yAxis: {
+			
+										},
+            series: [{
+                name: 'BMI',
+                type: 'bar',
+                data: [@Model.lastlist.bmi]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+								</script>
+
+									
+                            <script type="text/javascript">
+                                  // 基于准备好的dom，初始化echarts实例
+                         var myChart2 = echarts.init(document.getElementById('main3'));
+
+                        // 指定图表的配置项和数据
+                 var option = {
+            title: {
+                text: '体脂率%'
+            },
+            tooltip: {},
+            legend: {
+                
+            },
+            xAxis: {
+                data: ["上一次体脂率","当前体脂率"]
+            },
+            yAxis: {
+		
+										
+			        axisLabel: {
+                formatter: '{value}%'
+            }
+
+										},
+            series: [{
+                name: '体脂率',
+                type: 'bar',
+                data: [@Model.lastlist.bfp]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option);
+
+						  function fun()
+                                    {
+                                        var data = $("#formData").serialize();
+                                       
+                                
+
+                                        $.post("/BodyAbilities/Create",data,function(data){
+
+                                        myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,data.bmi]
+                                         }]
+                                            
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,data.bfp]
+                                         }]
+                                            
+                                    });
+                                    
+                                           
+                                    });
+                                        
+                                    }
+							function fun2()
+										{
+										    var height=$("#height").val();
+										    var weight=$("#weight").val();
+										    var waist=$("#waist").val();
+										    
+										    var bfp = (waist * 0.74 - (weight * 0.082 + 44.74)) / weight;
+                                            bfp = bfp * 100;
+										    var bmi = 1.0*weight/(height*height);
+
+										     myChart.setOption({
+
+                                              series: [{
+                                              name: 'BMI',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bmi,bmi]
+                                         }]
+                                            
+                                    });
+                                           myChart2.setOption({
+
+                                              series: [{
+                                              name: '体脂率',
+                                              type: 'bar',
+                                              data: [@Model.lastlist.bfp,bfp]
+                                         }]
+                                            
+                                    });
+										}
+                                </script>
+                          
+                        </div>
+                    </div>
+                </div>
+
+				 
+               </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">您在今年的体质变化</h3>
+                        </div>
+                        <div class="panel-body" >
+                            <div id="main2" style="width: 680px;height:350px;"></div>
+							<script type="text/javascript">
+
+								var time = new Array();
+								var bfp =new Array();
+								var bmi = new Array();
+								 @foreach(var x in Model.time)
+                                {
+                                    <text>
+                                         time.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bfp)
+                                {
+                                    <text>
+                                         bfp.push('@x');
+                                    </text>
+
+                                }
+								 @foreach(var x in Model.bmi)
+                                {
+                                    <text>
+                                         bmi.push('@x');
+                                    </text>
+
+                                }
+								 var app = echarts.init(document.getElementById('main2'));
+								app.title = '多 Y 轴示例';
+
+var colors = ['#5793f3', '#d14a61', '#675bba'];
+
+option = {
+    color: colors,
+
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    grid: {
+        right: '20%'
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data:['BMI','体脂率']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            data: time
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'BMI',
+            min: 10,
+            max: 90,
+            position: 'right',
+            axisLine: {
+                lineStyle: {
+                    color: colors[0]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} '
+            }
+        },
+        {
+            type: 'value',
+            name: '体脂率',
+            min: 10,
+            max: 90,
+            position: 'left',
+           
+            axisLine: {
+                lineStyle: {
+                    color: colors[1]
+                }
+            },
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+       
+    ],
+    series: [
+        {
+            name:'BMI',
+            type:'bar',
+            data: bmi
+        },
+        {
+            name:'体脂率',
+            type:'bar',
+            yAxisIndex: 1,
+            data:bfp
+        }
+       
+    ]
+};
+							 app.setOption(option);
+
+						    </script>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <hr>
+            <h2 id="section-2">基础体能训练</h2>
+            <p>Nullam hendrerit justo non leo aliquet imperdiet. Etiam in sagittis lectus. Suspendisse ultrices placerat accumsan. Mauris quis dapibus orci. In dapibus velit blandit pharetra tincidunt. Quisque non sapien nec lacus condimentum facilisis ut iaculis enim. Sed viverra interdum bibendum. Donec ac sollicitudin dolor. Sed fringilla vitae lacus at rutrum. Phasellus congue vestibulum ligula sed consequat.</p>
+            <p>Vestibulum consectetur scelerisque lacus, ac fermentum lorem convallis sed. Nam odio tortor, dictum quis malesuada at, pellentesque vitae orci. Vivamus elementum, felis eu auctor lobortis, diam velit egestas lacus, quis fermentum metus ante quis urna. Sed at facilisis libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum bibendum blandit dolor. Nunc orci dolor, molestie nec nibh in, hendrerit tincidunt ante. Vivamus sem augue, hendrerit non sapien in, mollis ornare augue.</p>
+            <hr>
+            <h2 id="section-3">实用技能训练</h2>
+            <p>Integer pulvinar leo id risus pellentesque vestibulum. Sed diam libero, sodales eget sapien vel, porttitor bibendum enim. Donec sed nibh vitae lorem porttitor blandit in nec ante. Pellentesque vitae metus ipsum. Phasellus sed nunc ac sem malesuada condimentum. Etiam in aliquam lectus. Nam vel sapien diam. Donec pharetra id arcu eget blandit. Proin imperdiet mattis augue in porttitor. Quisque tempus enim id lobortis feugiat. Suspendisse tincidunt risus quis dolor fringilla blandit. Ut sed sapien at purus lacinia porttitor. Nullam iaculis, felis a pretium ornare, dolor nisl semper tortor, vel sagittis lacus est consequat eros. Sed id pretium nisl. Curabitur dolor nisl, laoreet vitae aliquam id, tincidunt sit amet mauris.</p>
+            <p>Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget ante rutrum adipiscing. Cras interdum ipsum mattis, tempus mauris vel, semper ipsum. Duis sed dolor ut enim lobortis pellentesque ultricies ac ligula. Pellentesque convallis elit nisi, id vulputate ipsum ullamcorper ut. Cras ac pulvinar purus, ac viverra est. Suspendisse potenti. Integer pellentesque neque et elementum tempus. Curabitur bibendum in ligula ut rhoncus.</p>
+            <p>Quisque pharetra velit id velit iaculis pretium. Nullam a justo sed ligula porta semper eu quis enim. Pellentesque pellentesque, metus at facilisis hendrerit, lectus velit facilisis leo, quis volutpat turpis arcu quis enim. Nulla viverra lorem elementum interdum ultricies. Suspendisse accumsan quam nec ante mollis tempus. Morbi vel accumsan diam, eget convallis tellus. Suspendisse potenti.</p>
+            <hr>
+
+        </div>
+    </div>
+</div>

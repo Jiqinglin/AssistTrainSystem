@@ -1,0 +1,119 @@
+﻿@model IEnumerable<AssistTrainSystem.Models.EnergyAbility>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.user_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.create_time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.horbara_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.horbara_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.horbarb_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.horbarb_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.doubara_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.doubara_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.doubarb_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.doubarb_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pushup_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pushup_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.situp_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.situp_score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.score)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horbara_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horbara_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horbarb_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.horbarb_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doubara_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doubara_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doubarb_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.doubarb_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pushup_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pushup_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.situp_num)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.situp_score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.score)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

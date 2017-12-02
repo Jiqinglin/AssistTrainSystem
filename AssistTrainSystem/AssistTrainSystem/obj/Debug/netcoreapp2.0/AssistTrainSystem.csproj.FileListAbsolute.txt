@@ -30,3 +30,14 @@ D:/Asp.net_Core/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj/Debug/
 /Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj/Debug/netcoreapp2.0/AssistTrainSystem.AssemblyInfo.cs
 /Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj/Debug/netcoreapp2.0/AssistTrainSystem.dll
 /Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj/Debug/netcoreapp2.0/AssistTrainSystem.pdb
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.deps.json
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.json
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.runtimeconfig.dev.json
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.dll
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csprojResolveAssemblyReference.cache
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csproj.CoreCompileInputs.cache
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfoInputs.cache
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfo.cs
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.dll
+C:\Users\coder\Work\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.pdb

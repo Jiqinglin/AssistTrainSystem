@@ -1,0 +1,103 @@
+﻿@model AssistTrainSystem.Models.EnergyAbility
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>EnergyAbility</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="create_time" class="control-label"></label>
+                <input asp-for="create_time" class="form-control" />
+                <span asp-validation-for="create_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="horbara_num" class="control-label"></label>
+                <input asp-for="horbara_num" class="form-control" />
+                <span asp-validation-for="horbara_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="horbara_score" class="control-label"></label>
+                <input asp-for="horbara_score" class="form-control" />
+                <span asp-validation-for="horbara_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="horbarb_num" class="control-label"></label>
+                <input asp-for="horbarb_num" class="form-control" />
+                <span asp-validation-for="horbarb_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="horbarb_score" class="control-label"></label>
+                <input asp-for="horbarb_score" class="form-control" />
+                <span asp-validation-for="horbarb_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="doubara_num" class="control-label"></label>
+                <input asp-for="doubara_num" class="form-control" />
+                <span asp-validation-for="doubara_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="doubara_score" class="control-label"></label>
+                <input asp-for="doubara_score" class="form-control" />
+                <span asp-validation-for="doubara_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="doubarb_num" class="control-label"></label>
+                <input asp-for="doubarb_num" class="form-control" />
+                <span asp-validation-for="doubarb_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="doubarb_score" class="control-label"></label>
+                <input asp-for="doubarb_score" class="form-control" />
+                <span asp-validation-for="doubarb_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pushup_num" class="control-label"></label>
+                <input asp-for="pushup_num" class="form-control" />
+                <span asp-validation-for="pushup_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pushup_score" class="control-label"></label>
+                <input asp-for="pushup_score" class="form-control" />
+                <span asp-validation-for="pushup_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="situp_num" class="control-label"></label>
+                <input asp-for="situp_num" class="form-control" />
+                <span asp-validation-for="situp_num" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="situp_score" class="control-label"></label>
+                <input asp-for="situp_score" class="form-control" />
+                <span asp-validation-for="situp_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="score" class="control-label"></label>
+                <input asp-for="score" class="form-control" />
+                <span asp-validation-for="score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

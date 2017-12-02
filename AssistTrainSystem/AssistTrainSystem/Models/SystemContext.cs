@@ -20,5 +20,6 @@ namespace AssistTrainSystem.Models
             modelBuilder.Entity<User>().ToTable("User");
         }
         public DbSet<AssistTrainSystem.Models.BodyAbility> BodyAbility { get; set; }
+        public DbSet<AssistTrainSystem.Models.EnergyAbility> EnergyAbility { get; set; }
     }
 }

@@ -1,0 +1,108 @@
+﻿@model AssistTrainSystem.Models.EnergyAbility
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EnergyAbility</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.create_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.create_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.horbara_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.horbara_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.horbara_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.horbara_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.horbarb_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.horbarb_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.horbarb_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.horbarb_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.doubara_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.doubara_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.doubara_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.doubara_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.doubarb_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.doubarb_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.doubarb_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.doubarb_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pushup_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pushup_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.pushup_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.pushup_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.situp_num)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.situp_num)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.situp_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.situp_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.score)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
