@@ -29955,25 +29955,28 @@
     ]
   },
   "packageFolders": {
-    "/Users/chenyongkang/.nuget/packages/": {}
+    "/Users/xiaokang/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem.csproj",
+      "projectUniqueName": "/Users/xiaokang/Work/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem.csproj",
       "projectName": "AssistTrainSystem",
-      "projectPath": "/Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem.csproj",
-      "packagesPath": "/Users/chenyongkang/.nuget/packages/",
-      "outputPath": "/Users/chenyongkang/Documents/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj",
+      "projectPath": "/Users/xiaokang/Work/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem.csproj",
+      "packagesPath": "/Users/xiaokang/.nuget/packages/",
+      "outputPath": "/Users/xiaokang/Work/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/AssistTrainSystem/obj",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/chenyongkang/.config/NuGet/NuGet.Config"
+        "/Users/xiaokang/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "/Users/xiaokang/Projects/testLuence/testLuence/PanGu": {},
+        "http://nuget.cnitblog.com/nuget/Default": {},
+        "http://nuget.cnitblog.com/nuget/core": {},
+        "https://nuget.cnblogs.com/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
