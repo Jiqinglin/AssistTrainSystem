@@ -9,9 +9,10 @@ namespace AssistTrainSystem.Models
     public class Horbara_Score
     {
         [Key]
-        public int ID { get; set; }
+        public string ID { get; set; }
         public int age { get; set; }
         public int num { get; set; }
         public int score { get; set; }
+
     }
 }

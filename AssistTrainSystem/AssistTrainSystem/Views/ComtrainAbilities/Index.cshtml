@@ -1,0 +1,463 @@
+﻿@model AssistTrainSystem.Controllers.ComtrainAbilitiesController.ComtrainList
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LeftMenu.cshtml";
+}
+<script src="~/js/echarts.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">请输入测试参数</h3>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="formData">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="ID" name="ID" />
+                    <input type="hidden" id="user_id" name="user_id" value="@User.Identity.Name">
+                    <input type="hidden" id="type" name="type"/>
+                    <div class="form-group">
+                        <label id="gunhurdle_time2" name="gunhurdle_time2" class="control-label">携枪100米障碍</label>
+                        <input id="gunhurdle_time" name="gunhurdle_time" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="threeoffroad_time2" name="threeoffroad_time2" class="control-label">三公里越野</label>
+                        <input id="threeoffroad_time" name="threeoffroad_time" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="twohurdle_time2" name="twohurdle_time2" class="control-label">200米障碍</label>
+                        <input id="twohurdle_time" name="twohurdle_time" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="threehurdle_time2" name="threehurdle_time2" class="control-label">300米障碍</label>
+                        <input id="threehurdle_time" name="threehurdle_time" class="form-control" />
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label id="age2" name="age2" class="control-label">年龄</label>
+                        <input id="age" name="age" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group" style="display:inline">
+                        <input value="保存" onclick="fun()" class="btn btn-default" style="width:149px" />
+                        <input value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                    </div>
+                    <script type="text/javascript">
+                            function fun2() {
+                                $("#type").val("no");
+                                var data = $("#formData").serialize();
+
+                                $.post("/ComtrainAbilities/Create", data, function (data) {
+
+                                    myChart.setOption({
+                                        series: [
+
+
+                                    {
+                                        name: '上一次测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [@Model.lastComtrain.gunhurdle_score, @Model.lastComtrain.threeoffroad_score, @Model.lastComtrain.twohurdle_score,@Model.lastComtrain.threehurdle_score]
+                                    },
+                                    {
+                                        name: '当前测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [data.gunhurdlescore, data.threeoffroadscore, data.twohurdlescore, data.threehurdlescore]
+                                    }
+                                ]
+                                    });
+
+
+
+
+                                });
+                        }
+
+                              function fun() {
+                                $("#type").val("yes");
+                                var data = $("#formData").serialize();
+
+                                $.post("/ComtrainAbilities/Create", data, function (data) {
+
+                                    myChart.setOption({
+                                        series: [
+
+
+                                    {
+                                        name: '上一次测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [@Model.lastComtrain.gunhurdle_score, @Model.lastComtrain.threeoffroad_score, @Model.lastComtrain.twohurdle_score,@Model.lastComtrain.threehurdle_score]
+                                    },
+                                    {
+                                        name: '当前测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [data.gunhurdlescore, data.threeoffroadscore, data.twohurdlescore, data.threehurdlescore]
+                                    }
+                                ]
+                                    });
+
+
+
+
+                                });
+                                    }
+
+
+
+                    </script>
+
+                    <div class="form-group">
+
+                    </div>
+                    <script type="text/javascript">
+
+                    </script>
+                    <div>
+                        <p>系统建议：</p>
+                        <div style="height:116px">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">测试结果</h3>
+                    </div>
+                    <div class="panel-body" style="display:inline">
+
+                        <div class="row">
+
+                            <div id="main" class="col-md-10" style="width: 460px;height:556px;"></div>
+                        
+                        </div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('main'));
+
+                            var weatherIcons = {
+                                '引体向上': './data/asset/img/weather/sunny_128.png',
+                                '俯卧撑': './data/asset/img/weather/cloudy_128.png',
+                                '仰卧起坐': './data/asset/img/weather/showers_128.png'
+                            };
+
+                            var seriesLabel = {
+                                normal: {
+                                    show: true,
+                                    textBorderColor: '#333',
+                                    textBorderWidth: 2
+                                }
+                            }
+
+                            option = {
+                                title: {
+
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                },
+                                legend: {
+                                    data: ['上一次测试','当前测试']
+                                },
+                                grid: {
+                                    left: 100
+                                },
+                                toolbox: {
+                                    show: true,
+                                    feature: {
+                                        saveAsImage: {}
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'value',
+                                    name: '分数',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'category',
+                                    inverse: true,
+                                    data: ['100米携枪障碍', '三公里越野', '200米障碍','300米障碍'],
+                                    axisLabel: {
+
+                                        margin: 20,
+                                        rich: {
+                                            value: {
+                                                lineHeight: 30,
+                                                align: 'center'
+                                            },
+                                            Sunny: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Sunny
+                                                }
+                                            },
+                                            Cloudy: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Cloudy
+                                                }
+                                            },
+                                            Showers: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Showers
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [
+
+
+                                    {
+                                        name: '上一次测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [@Model.lastComtrain.gunhurdle_score, @Model.lastComtrain.threeoffroad_score, @Model.lastComtrain.twohurdle_score,@Model.lastComtrain.threehurdle_score]
+                                    },
+                                    {
+                                        name: '当前测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: []
+                                    }
+                                ]
+                            };
+
+                            myChart.setOption(option);
+
+
+
+
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">您在今年的体质变化</h3>
+            </div>
+            <div class="panel-body">
+                <div id="main2" style="width: 780px;height:350px;"></div>
+                <script type="text/javascript">
+
+                            var myChart3 = echarts.init(document.getElementById('main2'));
+
+                            var time = new Array();
+                            var gunhurdle = new Array();
+                            var threeoffroad = new Array();
+                            var twohurdle = new Array();
+                            var threehurdle = new Array();
+
+                            @foreach(var x in Model.gunhurdlescore)
+                            {
+                                  <text>
+                                        gunhurdle.push('@x');
+                                  </text>
+
+                            }
+
+                            @foreach(var x in Model.threeoffroadscore)
+                            {
+                                  <text>
+                                        threeoffroad.push('@x');
+                                  </text>
+
+                            }
+
+                            @foreach(var x in Model.twohurdlescore)
+                            {
+                                  <text>
+                                        twohurdle.push('@x');
+                                  </text>
+
+                            }
+
+                            @foreach(var x in Model.threehurdlescore)
+                            {
+                                  <text>
+                                        threehurdle.push('@x');
+                                  </text>
+
+                            }
+
+                            @foreach(var x in Model.time)
+                            {
+                                  <text>
+                                        time.push('@x');
+                                  </text>
+
+                            }
+
+                                        option = {
+                                            title: {
+                                                text: '综合应用训练成绩总览'
+                                            },
+                                tooltip: {
+                                                trigger: 'axis',
+                                    formatter: function (params, ticket, callback) {
+
+                                                    var res = params[0].name;
+
+                                        for (var i = 0, l = params.length; i < l; i++) {
+                                            if (params[i].seriesType === 'line') {
+                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + 'h';
+                                            } else {
+                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + '个';
+                                            }
+                                        }
+                                        return res;
+
+                                    }
+                                },
+                                grid: {
+                                    containLabel: true
+                                },
+                                legend: {
+                                    data: ['100米持枪障碍', '三公里越野', '200米障碍', '300米障碍'],
+                                    left: 'center',
+                                    right: '0%',
+                                    bottom: '88%',
+                                },
+                                xAxis: [{
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: false
+                                    },
+                                    data: time,
+                                    left: 'center',
+                                    right: '8%',
+                                    bottom: '0%',
+                                }],
+                                dataZoom: [{
+                                    type: 'slider',
+                                    xAxisIndex: 0,
+                                    filterMode: 'empty',
+                                    start: 0,
+                                    end: 100
+                                }, {
+                                    type: 'slider',
+                                    yAxisIndex: 0,
+                                    filterMode: 'empty',
+                                    start: 0,
+                                    end: 100
+                                }, {
+                                    type: 'inside',
+                                    xAxisIndex: 0,
+                                    filterMode: 'empty',
+                                    start: 0,
+                                    end: 100
+                                }, {
+                                    type: 'inside',
+                                    yAxisIndex: 0,
+                                    filterMode: 'empty',
+                                    start: 0,
+                                    end: 100
+                                }],
+                                yAxis: [{
+                                    type: 'value',
+                                    name: '次数',
+                                    min: 0,
+                                    position: 'left',
+                                    axisLabel: {}
+                                }, {
+                                    type: 'value',
+                                    name: '天数',
+                                    min: 0,
+                                    position: 'right',
+                                    axisLabel: {}
+                                }],
+                                series: [{
+                                    name: '100米持枪障碍',
+                                    type: 'line',
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'bottom',
+                                        }
+                                    },
+                                    lineStyle: {
+                                        normal: {
+                                            width: 3,
+                                            shadowColor: 'rgba(0,0,0,1.4)',
+                                            shadowBlur: 10,
+                                            shadowOffsetY: 10
+                                        }
+                                    },
+                                    data: gunhurdle
+                                }, {
+                                    name: '三公里越野',
+                                    type: 'bar',
+                                    yAxisIndex: 1,
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'top'
+                                        }
+                                    },
+                                    data: threeoffroad
+                                }, {
+                                    name: '200米障碍',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'top'
+                                        }
+                                    },
+                                    data: twohurdle
+                                }, {
+                                    name: '300米障碍',
+                                    type: 'bar',
+                                    yAxisIndex: 1,
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: 'top'
+                                        }
+                                    },
+                                    data: threehurdle
+
+                                }]
+                            };
+
+                            myChart3.setOption(option);
+
+                </script>
+            </div>
+        </div>
+    </div>
+
+</div>

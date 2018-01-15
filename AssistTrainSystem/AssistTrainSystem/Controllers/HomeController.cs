@@ -71,6 +71,31 @@ namespace AssistTrainSystem.Controllers
         {
             return View();
         }
+        public IActionResult test4()
+        {
+            return View();
+        }
+        public IActionResult test5()
+        {
+            return View();
+        }
+
+        public IActionResult test7()
+        {
+            return View();
+        }
+        public IActionResult test8()
+        {
+            return View();
+        }
+        public IActionResult test9()
+        {
+            return View();
+        }
+        public IActionResult test10()
+        {
+            return View();
+        }
         [Authorize(Roles = "User")]
         public IActionResult About()
         {

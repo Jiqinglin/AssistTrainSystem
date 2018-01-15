@@ -1,0 +1,534 @@
+﻿@model AssistTrainSystem.Models.NormalTrain
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="~/css/zzsc.css">
+<link rel="stylesheet" type="text/css" href="~/css/fency-checkbox.css">
+
+<h2>Create</h2>
+
+<h4>请勾选你今天已经测试的项目</h4>
+<hr />
+<script type="text/javascript">
+    var back_train = 0;
+    var chesk_train = 0;
+    var leg_train = 0;
+    var shouder_train = 0;
+    var arm_train = 0;
+    var abdomen_train = 0;
+    var stamina_train = 0;
+    var explosive_train = 0;
+</script>
+<div class="row">
+    <div class="col-md-6">
+        <div class="checkboxWrapper theme1">
+            <input type="checkbox" id="sample1">
+            <label for="sample1" onclick="fun()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;单杠一</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun() {
+                    if (back_train == 0)
+                        back_train = 1;
+                    else
+                        back_train = 0;
+
+                }
+            </script>
+
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme2">
+            <input type="checkbox" id="sample2">
+            <label for="sample2" onclick="fun2()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+                <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;单杠二</font>
+            </label>
+            <script type="text/javascript">
+                function fun() {
+
+                    if (chesk_train == 0)
+                        chesk_train = 1;
+                    else
+                        chesk_train = 0;
+
+                }
+            </script>
+
+
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme3">
+            <input type="checkbox" id="sample3">
+            <label for="sample3" onclick="fun3()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;双杠一</font>
+                <script type="text/javascript">
+                    function fun() {
+
+                        if (leg_train == 0)
+                            leg_train = 1;
+                        else
+                            leg_train = 0;
+
+
+                    }
+                </script>
+
+            </label>
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme4">
+            <input type="checkbox" id="sample4">
+            <label for="sample4" onclick="fun4()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+				S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+			</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;双杠二</font>
+                <script type="text/javascript">
+                    function fun() {
+
+                        if (shouder_train == 0)
+                            shouder_train = 1;
+                        else
+                            shouder_train = 0;
+
+                    }
+                </script>
+
+            </label>
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme5">
+            <input type="checkbox" id="sample5">
+            <label for="sample5" onclick="fun5()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;俯卧撑</font>
+                <script type="text/javascript">
+                    function fun() {
+                        if (arm_train == 0)
+                            arm_train = 1;
+                        else
+                            arm_train = 0;
+
+                    }
+                </script>
+
+            </label>
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme6">
+            <input type="checkbox" id="sample6">
+            <label for="sample6" onclick="fun6()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+				S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+			</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;仰卧起坐</font>
+                <script type="text/javascript">
+                    function fun() {
+
+                        if (abdomen_train == 0)
+                            abdomen_train = 1;
+                        else
+                            abdomen_train = 0;
+
+                    }
+                </script>
+
+            </label>
+        </div>
+        <!-- -->
+        <!-- -->
+        <div class="checkboxWrapper theme7">
+            <input type="checkbox" id="sample7">
+            <label for="sample7" onclick="fun7()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;T型跑</font>
+                <script type="text/javascript">
+                    function fun7() {
+
+                        if (explosive_train == 0)
+                            explosive_train = 1;
+                        else
+                            explosive_train = 0;
+
+                    }
+                </script>
+
+            </label>
+        </div>
+
+        <div class="checkboxWrapper theme1">
+            <input type="checkbox" id="sample8">
+            <label for="sample8" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;100米持枪绕杆屈伸返回跑</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme2">
+            <input type="checkbox" id="sample9">
+            <label for="sample9" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;400米</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme2">
+            <input type="checkbox" id="sample10">
+            <label for="sample10" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;3000米</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme3">
+            <input type="checkbox" id="sample11">
+            <label for="sample11" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;400米障碍</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme4">
+            <input type="checkbox" id="sample12">
+            <label for="sample12" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;五公里武装越野</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme5">
+            <input type="checkbox" id="sample13">
+            <label for="sample13" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;持枪100米障碍</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme6">
+            <input type="checkbox" id="sample14">
+            <label for="sample14" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;三公里武装越野</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme7">
+            <input type="checkbox" id="sample15">
+            <label for="sample15" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;200米障碍</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+
+        <div class="checkboxWrapper theme1">
+            <input type="checkbox" id="sample16">
+            <label for="sample16" onclick="fun8()">
+                <i>
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
+                    <circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11" cy="24.883" r="23.519" />
+
+                    <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
+
+				</svg>
+                </i>
+                <font size="4">&nbsp;&nbsp;&nbsp;300米障碍</font>
+            </label>
+
+            <script type="text/javascript">
+                function fun8() {
+
+                    if (stamina_train == 0)
+                        stamina_train = 1;
+                    else
+                        stamina_train = 0;
+
+
+
+                }
+            </script>
+
+        </div>
+
+        <hr>
+        <a onclick="fun9()"><font size="4">确认提交</font></a>
+
+        <script type="text/javascript">
+            function fun9() {
+                $.post()
+
+            }
+        </script>
+
+    </div>
+</div>
+
+

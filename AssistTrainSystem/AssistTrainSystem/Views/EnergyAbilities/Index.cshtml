@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AssistTrainSystem.Models.EnergyAbility>
+﻿@model AssistTrainSystem.Controllers.EnergyAbilitiesController.EnergyList
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/LeftMenu.cshtml";
@@ -17,52 +17,160 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" id="ID" name="ID" />
                     <input type="hidden" id="user_id" name="user_id" value="@User.Identity.Name">
-
+                    <input type="hidden" id="type" name="type"/>
                     <div class="form-group">
-                        <label id="height2" name="height2" class="control-label">单杠一练习</label>
-                        <input id="height" name="height" class="form-control" />
+                        <label id="horbara2" name="horbara2" class="control-label">单杠一练习(引体向上)</label>
+                        <input id="horbara_num" name="horbara_num" class="form-control" />
 
                     </div>
 
                     <div class="form-group">
-                        <label id="weight2" name="weight2" class="control-label">单杠二练习</label>
-                        <input id="weight" name="weight" class="form-control" />
+                        <label id="horbarb2" name="horbarb2" class="control-label">单杠二练习（卷身上）</label>
+                        <input id="horbarb_num" name="horbarb_num" class="form-control" />
 
                     </div>
 
                     <div class="form-group">
-                        <label id="age2" name="age2" class="control-label">双杠一练习</label>
+                        <label id="doubara2" name="doubara2" class="control-label">双杠一练习（屈臂伸）</label>
+                        <input id="doubara_num" name="doubara_num" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="doubarb2" name="doubarb2" class="control-label">双杠二练习（摆动屈臂伸）</label>
+                        <input id="doubarb_num" name="doubarb_num" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="pushup2" name="pushup2" class="control-label">俯卧撑</label>
+                        <input id="pushup_num" name="pushup_num" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="situp2" name="situp2" class="control-label">仰卧起坐</label>
+                        <input id="situp_num" name="situp_num" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="age2" name="age2" class="control-label">年龄</label>
                         <input id="age" name="age" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label id="waist2" name="waist2" class="control-label">双杠二练习</label>
-                        <input id="waist" name="waist" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label id="waist2" name="waist2" class="control-label">俯卧撑</label>
-                        <input id="waist" name="waist" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label id="waist2" name="waist2" class="control-label">仰卧起坐</label>
-                        <input id="waist" name="waist" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label id="waist2" name="waist2" class="control-label">年龄</label>
-                        <input id="waist" name="waist" class="form-control" />
 
                     </div>
 
                     <div class="form-group" style="display:inline">
                         <input value="保存" onclick="fun()" class="btn btn-default" style="width:149px" />
+
+                        <script type="text/javascript">
+                            function fun() {
+                                $("#type").val("yes");
+                                var data = $("#formData").serialize();
+
+                                $.post("/EnergyAbilities/Create", data, function (data) {
+
+                                    myChart.setOption({
+
+                                        series: [
+
+
+                                            {
+                                                name: '上一次测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [@Model.lastlist.doubara_score, @Model.lastlist.pushup_score, @Model.lastlist.situp_score]
+                                            },
+                                            {
+                                                name: '当前测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [data.horbara, data.pushup, data.situp]
+                                            }
+                                        ]
+                                    });
+
+                                    myChart2.setOption({
+
+                                        series: [
+
+
+                                            {
+                                                name: '上一次测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [@Model.lastlist.horbarb_score, @Model.lastlist.doubara_score, @Model.lastlist.doubarb_score]
+                                            },
+                                            {
+                                                name: '当前测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [data.horbarb, data.doubara, data.doubarb]
+                                            }
+                                        ]
+
+                                    });
+                                });
+                                    }
+
+
+
+                        </script>
+
                         <input value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                        <script type="text/javascript">
+                            function fun2() {
+                                $("#type").val("no");
+                                var data = $("#formData").serialize();
+
+                                $.post("/EnergyAbilities/Create", data, function (data) {
+
+                                    myChart.setOption({
+
+                                        series: [
+
+
+                                            {
+                                                name: '上一次测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [@Model.lastlist.doubara_score, @Model.lastlist.pushup_score, @Model.lastlist.situp_score]
+                                            },
+                                            {
+                                                name: '当前测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [data.horbara, data.pushup, data.situp]
+                                            }
+                                        ]
+                                    });
+
+                                    myChart2.setOption({
+
+                                        series: [
+
+
+                                            {
+                                                name: '上一次测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [@Model.lastlist.horbarb_score, @Model.lastlist.doubara_score, @Model.lastlist.doubarb_score]
+                                            },
+                                            {
+                                                name: '当前测试',
+                                                type: 'bar',
+                                                label: seriesLabel,
+                                                data: [data.horbarb, data.doubara, data.doubarb]
+                                            }
+                                        ]
+
+                                    });
+                                });
+                                    }
+
+
+                            
+                        </script>
                     </div>
 
                     <div class="form-group">
@@ -91,134 +199,216 @@
 
                         <div class="row">
 
-                            <div id="main" class="col-md-10" style="width: 380px;height:240px;"></div>
-                            <div id="main3" class="col-md-10" style="width:380px;height:240px;"></div>
+                            <div id="main" class="col-md-10" style="width: 460px;height:351px;"></div>
+                            <div id="main3" class="col-md-10" style="width:460px;height:351px;"></div>
                         </div>
                         <script type="text/javascript">
-							      // 基于准备好的dom，初始化echarts实例
-                         var myChart = echarts.init(document.getElementById('main'));
+                            var myChart = echarts.init(document.getElementById('main'));
 
-                        // 指定图表的配置项和数据
-                 var option = {
-            title: {
-                text: 'BMI'
-            },
-            tooltip: {},
-            legend: {
+                            var weatherIcons = {
+                                '引体向上': './data/asset/img/weather/sunny_128.png',
+                                '俯卧撑': './data/asset/img/weather/cloudy_128.png',
+                                '仰卧起坐': './data/asset/img/weather/showers_128.png'
+                            };
 
-            },
-            xAxis: {
-                data: ["上一次BMI","当前BMI"]
-            },
-            yAxis: {
+                            var seriesLabel = {
+                                normal: {
+                                    show: true,
+                                    textBorderColor: '#333',
+                                    textBorderWidth: 2
+                                }
+                            }
 
-										},
-            series: [{
-                name: 'BMI',
-                type: 'bar',
-                data: [@Model.lastlist.bmi]
-            }]
-        };
+                            option = {
+                                title: {
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-                        </script>
-
-
-                        <script type="text/javascript">
-                                  // 基于准备好的dom，初始化echarts实例
-                         var myChart2 = echarts.init(document.getElementById('main3'));
-
-                        // 指定图表的配置项和数据
-                 var option = {
-            title: {
-                text: '体脂率%'
-            },
-            tooltip: {},
-            legend: {
-
-            },
-            xAxis: {
-                data: ["上一次体脂率","当前体脂率"]
-            },
-            yAxis: {
-
-
-			        axisLabel: {
-                formatter: '{value}%'
-            }
-
-										},
-            series: [{
-                name: '体脂率',
-                type: 'bar',
-                data: [@Model.lastlist.bfp]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart2.setOption(option);
-
-						  function fun()
-                                    {
-                                        var data = $("#formData").serialize();
-
-
-
-                                        $.post("/BodyAbilities/Create",data,function(data){
-
-                                        myChart.setOption({
-
-                                              series: [{
-                                              name: 'BMI',
-                                              type: 'bar',
-                                              data: [@Model.lastlist.bmi,data.bmi]
-                                         }]
-
-                                    });
-                                           myChart2.setOption({
-
-                                              series: [{
-                                              name: '体脂率',
-                                              type: 'bar',
-                                              data: [@Model.lastlist.bfp,data.bfp]
-                                         }]
-
-                                    });
-
-
-                                    });
-
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'shadow'
                                     }
-							function fun2()
-										{
-										    var height=$("#height").val();
-										    var weight=$("#weight").val();
-										    var waist=$("#waist").val();
+                                },
+                                legend: {
+                                    data: ['上一次测试','当前测试']
+                                },
+                                grid: {
+                                    left: 100
+                                },
+                                toolbox: {
+                                    show: true,
+                                    feature: {
+                                        saveAsImage: {}
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'value',
+                                    name: '分数',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'category',
+                                    inverse: true,
+                                    data: ['引体向上', '俯卧撑', '仰卧起坐'],
+                                    axisLabel: {
 
-										    var bfp = (waist * 0.74 - (weight * 0.082 + 44.74)) / weight;
-                                            bfp = bfp * 100;
-										    var bmi = 1.0*weight/(height*height);
+                                        margin: 20,
+                                        rich: {
+                                            value: {
+                                                lineHeight: 30,
+                                                align: 'center'
+                                            },
+                                            Sunny: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Sunny
+                                                }
+                                            },
+                                            Cloudy: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Cloudy
+                                                }
+                                            },
+                                            Showers: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Showers
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [
 
-										     myChart.setOption({
 
-                                              series: [{
-                                              name: 'BMI',
-                                              type: 'bar',
-                                              data: [@Model.lastlist.bmi,bmi]
-                                         }]
+                                    {
+                                        name: '上一次测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [@Model.lastlist.doubara_score, @Model.lastlist.pushup_score, @Model.lastlist.situp_score]
+                                    },
+                                    {
+                                        name: '当前测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: []
+                                    }
+                                ]
+                            };
 
-                                    });
-                                           myChart2.setOption({
+                            myChart.setOption(option);
 
-                                              series: [{
-                                              name: '体脂率',
-                                              type: 'bar',
-                                              data: [@Model.lastlist.bfp,bfp]
-                                         }]
 
-                                    });
-										}
+
+
+                            var myChart2 = echarts.init(document.getElementById('main3'));
+
+                            var weatherIcons = {
+                                '卷身上': './data/asset/img/weather/sunny_128.png',
+                                '屈臂伸': './data/asset/img/weather/cloudy_128.png',
+                                '摆动屈臂伸': './data/asset/img/weather/showers_128.png'
+                            };
+
+                            var seriesLabel = {
+                                normal: {
+                                    show: true,
+                                    textBorderColor: '#333',
+                                    textBorderWidth: 2
+                                }
+                            }
+
+                            option = {
+                                title: {
+
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                },
+                                legend: {
+                                    data: ['上一次测试', '当前测试']
+                                },
+                                grid: {
+                                    left: 100
+                                },
+                                toolbox: {
+                                    show: true,
+                                    feature: {
+                                        saveAsImage: {}
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'value',
+                                    name: '分数',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'category',
+                                    inverse: true,
+                                    data: ['卷身上', '屈臂伸', '摆臂屈臂伸'],
+                                    axisLabel: {
+
+                                        margin: 20,
+                                        rich: {
+                                            value: {
+                                                lineHeight: 30,
+                                                align: 'center'
+                                            },
+                                            Sunny: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Sunny
+                                                }
+                                            },
+                                            Cloudy: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Cloudy
+                                                }
+                                            },
+                                            Showers: {
+                                                height: 40,
+                                                align: 'center',
+                                                backgroundColor: {
+                                                    image: weatherIcons.Showers
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [
+
+
+                                    {
+                                        name: '上一次测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: [@Model.lastlist.horbarb_score, @Model.lastlist.doubara_score, @Model.lastlist.doubarb_score]
+                                    },
+                                    {
+                                        name: '当前测试',
+                                        type: 'bar',
+                                        label: seriesLabel,
+                                        data: []
+                                    }
+                                ]
+                            };
+
+                            myChart2.setOption(option);
+
+
                         </script>
 
                     </div>
@@ -237,116 +427,134 @@
                 <div id="main2" style="width: 680px;height:350px;"></div>
                 <script type="text/javascript">
 
-								var time = new Array();
-								var bfp =new Array();
-								var bmi = new Array();
-								 @foreach(var x in Model.time)
-                                {
+                            var myChart3 = echarts.init(document.getElementById('main2'));
+
+                            var time = new Array();
+                            var score = new Array();
+
+                            @foreach(var x in Model.list)
+                             {
                                     <text>
-                                         time.push('@x');
+                                            score.push('@x.score');
                                     </text>
 
-                                }
-								 @foreach(var x in Model.bfp)
-                                {
+                             }
+
+                            @foreach(var x in Model.timelist)
+                             {
                                     <text>
-                                         bfp.push('@x');
+                                            time.push('@x');
                                     </text>
 
-                                }
-								 @foreach(var x in Model.bmi)
-                                {
-                                    <text>
-                                         bmi.push('@x');
-                                    </text>
+                             }
+                            option = {
+                                backgroundColor: '#212121',
+                                color: ['#ffc94c'],
+                                legend: {
+                                    show: true,
+                                    right: '6%',
+                                    data: [{
+                                        name: '销售数据',
+                                        icon: 'circle',
+                                        textStyle: {
+                                            fontSize: '16',
+                                            color: '#fff0c2'
+                                        },
+                                    }],
+                                },
+                                grid: {
+                                    left: '6%',
+                                    right: '7%',
+                                    top: '18%',
+                                    bottom: '6%',
+                                    containLabel: true
+                                },
+                                textStyle: {
+                                    fontSize: '14',
+                                    fontWeight: 'normal',
+                                    color: '#ffffff'
+                                },
+                                xAxis: {
+                                    show: true,
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    data: time,
+                                },
+                                yAxis: {
+                                    show: true,
+                                    type: 'value',
+                                    splitLine: {
+                                        show: true,
+                                        lineStyle: { // 属性lineStyle（详见lineStyle）控制线条样式
+                                            color: 'rgba(255, 255, 255, 0.06)',
+                                        }
+                                    },
+                                    axisLabel: {
+                                        formatter: function (params) {
+                                            if (params === 0) {
+                                                return ''
+                                            } else {
+                                                return params
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: '销售数据',
+                                    type: 'line',
+                                    smooth: true,
+                                    showSymbol: false,
+                                    itemStyle: {
+                                        normal: {
+                                            lineStyle: {
+                                                color: '#ffc94c'
+                                            }
+                                        }
+                                    },
+                                    areaStyle: {
+                                        normal: {
+                                            color: {
+                                                type: 'linear',
+                                                x: 0,
+                                                y: 0,
+                                                x2: 0,
+                                                y2: 1,
+                                                colorStops: [{
+                                                    offset: 0,
+                                                    color: 'rgba(255, 225, 0, 0.2)',
+                                                }, {
+                                                    offset: 1,
+                                                    color: 'rgba(255, 225, 0, 0)',
+                                                }],
+                                                globalCoord: false
+                                            },
+                                        }
+                                    },
+                                    markPoint: {
+                                        data: [{
+                                            type: 'max',
+                                            label: {
+                                                normal: {
+                                                    show: true,
+                                                    formatter: ''
+                                                }
+                                            },
+                                            itemStyle: {
+                                                normal: {
+                                                    color: '#ffc94c',
+                                                    borderColor: 'rgba(255, 201, 76, 0.3)',
+                                                    borderWidth: 12, // 标注边线线宽，单位px，默认为1
+                                                }
+                                            },
+                                            symbol: 'circle',
+                                            symbolSize: 12,
+                                        }],
+                                    },
+                                    data: score
+                                }]
+                            };
 
-                                }
-								 var app = echarts.init(document.getElementById('main2'));
-								app.title = '多 Y 轴示例';
-
-var colors = ['#5793f3', '#d14a61', '#675bba'];
-
-option = {
-    color: colors,
-
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross'
-        }
-    },
-    grid: {
-        right: '20%'
-    },
-    toolbox: {
-        feature: {
-            dataView: {show: true, readOnly: false},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
-    },
-    legend: {
-        data:['BMI','体脂率']
-    },
-    xAxis: [
-        {
-            type: 'category',
-            axisTick: {
-                alignWithLabel: true
-            },
-            data: time
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            name: 'BMI',
-            min: 10,
-            max: 90,
-            position: 'right',
-            axisLine: {
-                lineStyle: {
-                    color: colors[0]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} '
-            }
-        },
-        {
-            type: 'value',
-            name: '体脂率',
-            min: 10,
-            max: 90,
-            position: 'left',
-
-            axisLine: {
-                lineStyle: {
-                    color: colors[1]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} %'
-            }
-        }
-
-    ],
-    series: [
-        {
-            name:'BMI',
-            type:'bar',
-            data: bmi
-        },
-        {
-            name:'体脂率',
-            type:'bar',
-            yAxisIndex: 1,
-            data:bfp
-        }
-
-    ]
-};
-							 app.setOption(option);
+                            myChart3.setOption(option);
 
                 </script>
             </div>

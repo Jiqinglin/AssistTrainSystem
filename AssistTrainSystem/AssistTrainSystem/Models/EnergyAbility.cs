@@ -18,6 +18,8 @@ namespace AssistTrainSystem.Models
         public string user_id { get; set; }
         //测试时间
         public DateTime create_time { get; set; }
+        //用户年龄
+        public int age { get; set; }
         //单杠一
         public int horbara_num { get; set; }
         //单杠一，分数
@@ -30,7 +32,7 @@ namespace AssistTrainSystem.Models
         public int doubara_num { get; set; }
         //双杠一，分数
         public int doubara_score { get; set; }
-        //双杠二
+        //双杠二7
         public int doubarb_num { get; set; }
         //双杠二，分数
         public int doubarb_score { get; set; }

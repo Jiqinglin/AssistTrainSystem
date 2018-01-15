@@ -1,0 +1,12 @@
+body{
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+}
+.zzsc-container{
+	margin: 0 auto;
+}
+.zzsc-content{
+	width: 600px;
+	margin: 0 auto;
+}

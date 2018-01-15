@@ -1,0 +1,11 @@
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Release\netcoreapp2.0\AssistTrainSystem.deps.json
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Release\netcoreapp2.0\AssistTrainSystem.runtimeconfig.json
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Release\netcoreapp2.0\AssistTrainSystem.runtimeconfig.dev.json
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Release\netcoreapp2.0\AssistTrainSystem.dll
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\bin\Release\netcoreapp2.0\AssistTrainSystem.pdb
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.csprojResolveAssemblyReference.cache
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.csproj.CoreCompileInputs.cache
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.AssemblyInfoInputs.cache
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.AssemblyInfo.cs
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.dll
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Release\netcoreapp2.0\AssistTrainSystem.pdb

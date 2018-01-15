@@ -1,0 +1,87 @@
+﻿@model AssistTrainSystem.Models.ComtrainAbilities
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ComtrainAbilities</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.create_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.create_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.gunhurdle_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.gunhurdle_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.gunhurdle_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.gunhurdle_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.threeoffroad_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.threeoffroad_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.threeoffroad_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.threeoffroad_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.twohurdle_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.twohurdle_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.twohurdle_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.twohurdle_score)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.threehurdle_time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.threehurdle_time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.threehurdle_score)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.threehurdle_score)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

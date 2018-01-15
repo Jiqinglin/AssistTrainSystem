@@ -1,0 +1,69 @@
+﻿@model AssistTrainSystem.Models.StaminaAbility
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>StaminaAbility</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="create_time" class="control-label"></label>
+                <input asp-for="create_time" class="form-control" />
+                <span asp-validation-for="create_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fourrun_time" class="control-label"></label>
+                <input asp-for="fourrun_time" class="form-control" />
+                <span asp-validation-for="fourrun_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fourrun_score" class="control-label"></label>
+                <input asp-for="fourrun_score" class="form-control" />
+                <span asp-validation-for="fourrun_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threerun_time" class="control-label"></label>
+                <input asp-for="threerun_time" class="form-control" />
+                <span asp-validation-for="threerun_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threerun_score" class="control-label"></label>
+                <input asp-for="threerun_score" class="form-control" />
+                <span asp-validation-for="threerun_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="score" class="control-label"></label>
+                <input asp-for="score" class="form-control" />
+                <span asp-validation-for="score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

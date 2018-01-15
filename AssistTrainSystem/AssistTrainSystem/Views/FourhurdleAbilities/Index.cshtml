@@ -1,0 +1,456 @@
+﻿@model AssistTrainSystem.Controllers.FourhurdleAbilitiesController.FourhurdleList
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LeftMenu.cshtml";
+}
+<script src="~/js/echarts.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">请输入测试参数</h3>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="formData">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="ID" name="ID" />
+                    <input type="hidden" id="user_id" name="user_id" value="@User.Identity.Name">
+                    <input type="hidden" id="type" name="type"/>
+                    <div class="form-group">
+                        <label id="fourhurdle_time2" name="fourhurdle_time2" class="control-label">400米障碍</label>
+                        <input id="fourhurdle_time" name="fourhurdle_time" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label id="age2" name="age2" class="control-label">年龄</label>
+                        <input id="age" name="age" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group" style="display:inline">
+                        <input value="保存" onclick="fun()" class="btn btn-default" style="width:149px" />
+                        <input value="测试一下" onclick="fun2()" class="btn btn-default" style="width:149px" />
+                    </div>
+
+                    <script type="text/javascript">
+
+                        function fun() {
+
+                            $("#type").val("yes");
+
+                            var data = $("#formData").serialize();
+
+                            $.post("/FourhurdleAbilities/Create", data, function (data) {
+
+                                myChart.setOption({
+
+                                    series: [
+                                        {
+                                            name: '微博情感倾向对比',
+                                            type: 'bar',
+                                            barWidth: '60%',
+                                            data: [@Model.lastFourhurdle.fourhurdle_score,data.num]
+                                        }
+                                    ]
+
+                                });
+
+                            });
+
+                        }
+
+
+                        function fun2()
+                        {
+                            $("#type").val("no");
+
+                                var data = $("#formData").serialize();
+
+                                $.post("/FourhurdleAbilities/Create", data, function (data) {
+
+                                myChart.setOption({
+
+                                    series: [
+                                        {
+                                            name: '微博情感倾向对比',
+                                            type: 'bar',
+                                            barWidth: '60%',
+                                            data: [@Model.lastFourhurdle.fourhurdle_score, data.num]
+                                        }
+                                    ]
+
+                                });
+
+                            });
+
+                        }
+
+                        </script>
+
+
+
+                    <div class="form-group" style="text-align:left;">
+                        <div id="main" style="width: 460px;height:361px;"></div>
+
+                    </div>
+                    <script type="text/javascript">
+
+                    </script>
+                    <div>
+                        <p>系统建议：</p>
+                        <div style="height:207px">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">测试结果</h3>
+                    </div>
+                    <div class="panel-body" style="display:inline">
+
+                        <div class="row">
+
+
+                            <div id="main3" class="col-md-10" style="width:460px;height:712px;"></div>
+                        </div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('main'));
+
+
+                            option = {
+                                color: ['#3398DB'],
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                    }
+                                },
+                                grid: {
+                                    left: '0%',
+                                    right: '10%',
+                                    bottom: '20%',
+                                    containLabel: true
+                                },
+                                xAxis: [
+                                    {
+                                        type: 'category',
+                                        data: ['上次测试', '当前测试'],
+                                        axisTick: {
+                                            alignWithLabel: true
+                                        }
+                                    }
+                                ],
+                                yAxis: [
+                                    {
+                                        type: 'value'
+                                    }
+                                ],
+                                series: [
+                                    {
+                                        name: '微博情感倾向对比',
+                                        type: 'bar',
+                                        barWidth: '60%',
+                                        data: [@Model.lastFourhurdle.fourhurdle_score]
+                                    }
+                                ]
+                            };
+
+
+                            myChart.setOption(option);
+
+
+
+
+                            var myChart2 = echarts.init(document.getElementById('main3'));
+
+                              var time = new Array();
+
+                              @foreach(var x in Model.timelist)
+                             {
+                                    <text>
+                                            time.push('@x');
+                                    </text>
+
+                             }
+
+                            var num = new Array();
+                              @foreach(var x in Model.numlist)
+                             {
+                                    <text>
+                                            num.push('@x');
+                                    </text>
+
+                             }
+
+
+                            var lineColor = '#189cbb';
+                            var xAxisData = time;
+                            var seriesData = num;
+                            var minData = '15%';
+                            var maxData = '55%';
+                            var markArea = {
+                                silent: true,
+                                label: {
+                                    normal: {
+                                        position: ['10%', '50%']
+                                    }
+                                },
+                                data: [
+                                    [{
+                                        name: '差',
+                                        yAxis: 0,
+                                        itemStyle: {
+                                            normal: {
+                                                color: 'rgba(70,40,53,0.5)'
+                                            }
+                                        },
+                                        label: {
+                                            normal: {
+                                                color: "#eb297d",
+                                                fontSize: 18
+                                            }
+                                        }
+                                    }, {
+                                        yAxis: 200
+                                    }],
+                                    [{
+                                        name: '良',
+                                        yAxis: 60,
+                                        itemStyle: {
+                                            normal: {
+                                                color: 'rgba(11,78,112,0.5)'
+                                            }
+                                        },
+                                        label: {
+                                            normal: {
+                                                color: "#2bff8f",
+                                                fontSize: 18,
+                                                offset: [0, 40]
+                                            }
+                                        }
+                                    }, {
+                                        yAxis: 300,
+                                    }],
+                                    [{
+                                        name: '优',
+                                        yAxis: 80,
+                                        itemStyle: {
+                                            normal: {
+                                                color: 'rgba(124,97,22,0.5)'
+                                            }
+                                        },
+                                        label: {
+                                            normal: {
+                                                color: "#ffc72b",
+                                                fontSize: 18
+                                            }
+                                        }
+                                    }, {
+                                        yAxis: 400,
+                                    }]
+                                ]
+                            };
+                            option = {
+                                tooltip: {
+                                    show: false,//去除面板显示
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'cross',
+                                        label: {
+                                            backgroundColor: '#185164'
+                                        }
+                                    }
+                                },
+                                // legend: {
+                                //     show: true,
+                                //     data: ['通过率', '未通过率'],
+                                //     icon:'circle',
+                                //     textStyle:{
+                                //         color:'#3dd3f8',
+                                //     },
+                                // },
+                                backgroundColor: '',
+                                color: ['#3dd3f8', '#eb297d'],//3dd3f8
+                                grid: {
+                                    left: '3%',
+                                    right: '6%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+                                toolbox: {
+                                    feature: {
+                                        saveAsImage: {}
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    axisLabel: {
+                                        textStyle: {
+                                            color: lineColor,
+                                            fontSize: 18,
+                                        }
+                                    },
+                                    axisTick: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                        }
+                                    },
+                                    axisLine: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                        }
+                                    },
+                                    splitLine: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                            type: 'dashed',
+                                        }
+                                    },
+                                    name: '月份',
+                                    nameTextStyle: {
+                                        color: '#fff',
+                                        fontSize: 18,
+                                        padding: [0, 0, 0, 10]
+                                    },
+                                    data: xAxisData
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        textStyle: {
+                                            color: lineColor,
+                                            fontSize: 18,
+                                        }
+                                    },
+                                    axisTick: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                        }
+                                    },
+                                    axisLine: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                        }
+                                    },
+                                    splitLine: {
+                                        lineStyle: {
+                                            color: lineColor,
+                                            type: 'dashed',
+                                        },
+                                        show: false
+                                    },
+                                    name: '分数线',
+                                    nameTextStyle: {
+                                        color: '#fff',
+                                        fontSize: 18,
+                                        padding: [0, 0, 15, 0]
+                                    },
+                                },
+                                series: [{
+                                    name: '通过率',
+                                    type: 'line',
+                                    stack: '总量',
+                                    smooth: true, //这句就是让曲线变平滑的
+                                    data: seriesData,
+                                    symbol: 'none', //拐点样式
+                                    markPoint: {
+                                        data: [{
+                                            type: 'max',
+                                            name: '通过率',
+                                            symbolSize: [70, 65],
+                                            itemStyle: {
+                                                normal: {
+                                                    color: "#fab800"
+                                                }
+                                            },
+                                            label: {
+                                                normal: {
+                                                    formatter: maxData,
+                                                    show: true,
+                                                    textStyle: {
+                                                        fontSize: '16',
+                                                        fontWeight: 'bold',
+                                                        color: '#fff'
+                                                    }
+                                                }
+                                            }
+                                        }, {
+                                            type: 'min',
+                                            name: '未通过率',
+                                            symbolSize: [70, 65],
+                                            itemStyle: {
+                                                normal: {
+                                                    color: "#eb297d"
+                                                }
+                                            },
+                                            label: {
+                                                normal: {
+                                                    formatter: minData,
+                                                    show: true,
+                                                    textStyle: {
+                                                        fontSize: '16',
+                                                        fontWeight: 'bold',
+                                                        color: '#fff'
+                                                    }
+                                                }
+                                            }
+                                        }]
+                                    },
+                                    markLine: {
+                                        symbol: 'none',
+                                        data: [{
+                                            type: 'min',
+                                            coord: [0, 0],
+                                            lineStyle: {
+                                                normal: {
+                                                    color: '#fff',
+                                                    type: 'dashed'
+                                                }
+                                            }
+                                        }, {
+                                            type: 'min',
+                                            coord: [0, 0],
+                                            lineStyle: {
+                                                normal: {
+                                                    color: '#fff',
+                                                    type: 'dashed'
+                                                }
+                                            }
+                                        }]
+                                    },
+                                    markArea: markArea
+                                }, {
+                                    name: '未通过率',
+                                    type: 'line',
+                                    stack: '总量',
+                                    // data: [0, 0, 0, 0, 0, 0, 0]
+                                },]
+                            };
+
+                            myChart2.setOption(option);
+
+
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</div>

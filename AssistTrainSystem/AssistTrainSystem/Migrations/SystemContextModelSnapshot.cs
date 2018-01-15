@@ -46,10 +46,44 @@ namespace AssistTrainSystem.Migrations
                     b.ToTable("BodyAbility");
                 });
 
+            modelBuilder.Entity("AssistTrainSystem.Models.ComtrainAbilities", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("gunhurdle_score");
+
+                    b.Property<double>("gunhurdle_time");
+
+                    b.Property<int>("threehurdle_score");
+
+                    b.Property<double>("threehurdle_time");
+
+                    b.Property<int>("threeoffroad_score");
+
+                    b.Property<double>("threeoffroad_time");
+
+                    b.Property<int>("twohurdle_score");
+
+                    b.Property<double>("twohurdle_time");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ComtrainAbilities");
+                });
+
             modelBuilder.Entity("AssistTrainSystem.Models.EnergyAbility", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
 
                     b.Property<DateTime>("create_time");
 
@@ -86,9 +120,69 @@ namespace AssistTrainSystem.Migrations
                     b.ToTable("EnergyAbility");
                 });
 
-            modelBuilder.Entity("AssistTrainSystem.Models.Horbara_Score", b =>
+            modelBuilder.Entity("AssistTrainSystem.Models.FiveoffroadAbilities", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("fiveoffroad_score");
+
+                    b.Property<double>("fiveoffroad_time");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FiveoffroadAbilities");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.FlexibleAbility", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<double>("flexible_num");
+
+                    b.Property<double>("flexible_score");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FlexiableAbility");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.FourhurdleAbilities", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("fourhurdle_score");
+
+                    b.Property<double>("fourhurdle_time");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FourhurdleAbilities");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.Horbara_Score", b =>
+                {
+                    b.Property<string>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("age");
@@ -100,6 +194,132 @@ namespace AssistTrainSystem.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Horbara_Score");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.NormalTrain", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Leg_train");
+
+                    b.Property<int>("abdomen_train");
+
+                    b.Property<int>("arm_train");
+
+                    b.Property<int>("back_train");
+
+                    b.Property<int>("chesk_train");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("explosive_train");
+
+                    b.Property<int>("shoulder_train");
+
+                    b.Property<int>("stamina_train");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("NormalTrain");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.PersonalNormlTrain", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Leg_train");
+
+                    b.Property<int>("abdomen_train");
+
+                    b.Property<int>("arm_train");
+
+                    b.Property<int>("back_train");
+
+                    b.Property<int>("chesk_train");
+
+                    b.Property<int>("explosive_train");
+
+                    b.Property<int>("shoulder_train");
+
+                    b.Property<int>("stamina_train");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PersonalNormlTrain");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.PersonalPay", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<double>("income");
+
+                    b.Property<double>("pay");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PersonalPay");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.SpeedAbility", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Gunrun_score");
+
+                    b.Property<double>("Gunrun_time");
+
+                    b.Property<int>("Trun_score");
+
+                    b.Property<double>("Trun_time");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("score");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("SpeedAbility");
+                });
+
+            modelBuilder.Entity("AssistTrainSystem.Models.StaminaAbility", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("age");
+
+                    b.Property<DateTime>("create_time");
+
+                    b.Property<int>("fourrun_score");
+
+                    b.Property<double>("fourrun_time");
+
+                    b.Property<int>("score");
+
+                    b.Property<int>("threerun_score");
+
+                    b.Property<double>("threerun_time");
+
+                    b.Property<string>("user_id");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("StaminaAbility");
                 });
 
             modelBuilder.Entity("AssistTrainSystem.Models.User", b =>

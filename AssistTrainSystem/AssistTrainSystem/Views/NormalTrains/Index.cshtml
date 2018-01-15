@@ -1,0 +1,89 @@
+﻿@model IEnumerable<AssistTrainSystem.Models.NormalTrain>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.user_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.create_time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.back_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.chesk_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Leg_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.shoulder_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.arm_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.abdomen_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.stamina_train)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.explosive_train)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.create_time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.back_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chesk_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leg_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shoulder_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arm_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.abdomen_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stamina_train)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.explosive_train)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

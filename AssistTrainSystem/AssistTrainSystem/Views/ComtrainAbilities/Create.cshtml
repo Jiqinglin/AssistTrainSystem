@@ -1,0 +1,83 @@
+﻿@model AssistTrainSystem.Models.ComtrainAbilities
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>ComtrainAbilities</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="create_time" class="control-label"></label>
+                <input asp-for="create_time" class="form-control" />
+                <span asp-validation-for="create_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gunhurdle_time" class="control-label"></label>
+                <input asp-for="gunhurdle_time" class="form-control" />
+                <span asp-validation-for="gunhurdle_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gunhurdle_score" class="control-label"></label>
+                <input asp-for="gunhurdle_score" class="form-control" />
+                <span asp-validation-for="gunhurdle_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threeoffroad_time" class="control-label"></label>
+                <input asp-for="threeoffroad_time" class="form-control" />
+                <span asp-validation-for="threeoffroad_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threeoffroad_score" class="control-label"></label>
+                <input asp-for="threeoffroad_score" class="form-control" />
+                <span asp-validation-for="threeoffroad_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="twohurdle_time" class="control-label"></label>
+                <input asp-for="twohurdle_time" class="form-control" />
+                <span asp-validation-for="twohurdle_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="twohurdle_score" class="control-label"></label>
+                <input asp-for="twohurdle_score" class="form-control" />
+                <span asp-validation-for="twohurdle_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threehurdle_time" class="control-label"></label>
+                <input asp-for="threehurdle_time" class="form-control" />
+                <span asp-validation-for="threehurdle_time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="threehurdle_score" class="control-label"></label>
+                <input asp-for="threehurdle_score" class="form-control" />
+                <span asp-validation-for="threehurdle_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

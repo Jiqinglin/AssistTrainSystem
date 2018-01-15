@@ -92,7 +92,7 @@ namespace AssistTrainSystem.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Create([Bind("user_id,height,weight,age,waist,")] BodyAbility bodyAbility)
         {
            bodyAbility.create_time = DateTime.Now;
@@ -145,6 +145,7 @@ namespace AssistTrainSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Edit(int id, [Bind("ID,user_id,create_time,height,weight,age,waist,bfp")] BodyAbility bodyAbility)
         {
             if (id != bodyAbility.ID)
