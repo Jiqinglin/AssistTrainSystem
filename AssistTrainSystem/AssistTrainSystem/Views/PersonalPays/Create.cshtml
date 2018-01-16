@@ -46,7 +46,7 @@
 					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;单杠一</font>
+                <font size="4">单杠一</font>
             </label>
 
             <script type="text/javascript">
@@ -55,6 +55,8 @@
                         dangan1 = 42;
                     else
                         dangan1 = 0;
+
+                    
 
                 }
             </script>
@@ -74,7 +76,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;单杠二</font>
+                <font size="4">单杠二</font>
             </label>
             <script type="text/javascript">
                 function fun2() {
@@ -103,7 +105,7 @@
 					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;双杠一</font>
+                <font size="4">双杠一</font>
                 <script type="text/javascript">
                     function fun3() {
 
@@ -133,7 +135,7 @@
 
 			</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;双杠二</font>
+                <font size="4">双杠二</font>
                 <script type="text/javascript">
                     function fun4() {
 
@@ -162,7 +164,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;俯卧撑</font>
+                <font size="4">俯卧撑</font>
                 <script type="text/javascript">
                     function fun5() {
                         if (fuwocheng  == 0)
@@ -191,7 +193,7 @@
 
 			</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;仰卧起坐</font>
+                <font size="4">仰卧起坐</font>
                 <script type="text/javascript">
                     function fun6() {
 
@@ -220,7 +222,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;T型跑</font>
+                <font size="4">T型跑</font>
                 <script type="text/javascript">
                     function fun7() {
 
@@ -248,7 +250,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;100米持枪绕杆屈伸返回跑</font>
+                <font size="4">100米持枪绕杆屈伸返回跑</font>
             </label>
 
             <script type="text/javascript">
@@ -282,7 +284,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;400米</font>
+                <font size="4">400米</font>
             </label>
 
             <script type="text/javascript">
@@ -315,7 +317,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;3000米</font>
+                <font size="4">3000米</font>
             </label>
 
             <script type="text/javascript">
@@ -348,7 +350,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;400米障碍</font>
+                <font size="4">400米障碍</font>
             </label>
 
             <script type="text/javascript">
@@ -381,7 +383,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;五公里武装越野</font>
+                <font size="4">五公里武装越野</font>
             </label>
 
             <script type="text/javascript">
@@ -414,7 +416,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;持枪100米障碍</font>
+                <font size="4">持枪100米障碍</font>
             </label>
 
             <script type="text/javascript">
@@ -447,7 +449,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;三公里武装越野</font>
+                <font size="4">三公里武装越野</font>
             </label>
 
             <script type="text/javascript">
@@ -478,7 +480,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;200米障碍</font>
+                <font size="4">200米障碍</font>
             </label>
 
             <script type="text/javascript">
@@ -510,7 +512,7 @@
 
 				</svg>
                 </i>
-                <font size="4">&nbsp;&nbsp;&nbsp;300米障碍</font>
+                <font size="4">300米障碍</font>
             </label>
 
             <script type="text/javascript">
@@ -534,10 +536,10 @@
         <script type="text/javascript">
 
           
-            var all = dangan1 + dangan2 + shuanggan1 + shuanggan2 + fuwocheng + yangwoqizuo + tpao + gun100 + run400 + run3000 + run400s + run5 + g100 + grun3000 + run200 + run300+1700;
+           
             function funx() {
 
-               
+                var all = dangan1 + dangan2 + shuanggan1 + shuanggan2 + fuwocheng + yangwoqizuo + tpao + gun100 + run400 + run3000 + run400s + run5 + g100 + grun3000 + run200 + run300 + 1700;
                
                 $.post("/PersonalPays/outcome", { "outcome": all }, function (data) { 
                    
