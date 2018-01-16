@@ -1,9 +1,10 @@
-﻿@model AssistTrainSystem.Models.NormalTrain
+﻿@model AssistTrainSystem.Models.PersonalPay
 
 @{
     ViewData["Title"] = "Create";
 }
 
+<link rel="stylesheet" type="text/css" href="~/css/suns.css">
 <link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="~/css/zzsc.css">
 <link rel="stylesheet" type="text/css" href="~/css/fency-checkbox.css">
@@ -13,14 +14,23 @@
 <h4>请勾选你今天已经测试的项目</h4>
 <hr />
 <script type="text/javascript">
-    var back_train = 0;
-    var chesk_train = 0;
-    var leg_train = 0;
-    var shouder_train = 0;
-    var arm_train = 0;
-    var abdomen_train = 0;
-    var stamina_train = 0;
-    var explosive_train = 0;
+    var dangan1 = 0;
+    var dangan2 = 0;
+    var shuanggan1 = 0;
+    var shuanggan2 = 0;
+    var fuwocheng = 0;
+    var lititiqianqu = 0;
+    var yangwoqizuo = 0;
+    var tpao = 0;
+    var gun100 = 0;
+    var run400 = 0;
+    var run3000 = 0;
+    var run400s = 0;
+    var run5 = 0;
+    var g100 = 0;
+    var grun3000 = 0;
+    var run200 = 0;
+    var run300 = 0;
 </script>
 <div class="row">
     <div class="col-md-6">
@@ -41,10 +51,10 @@
 
             <script type="text/javascript">
                 function fun() {
-                    if (back_train == 0)
-                        back_train = 1;
+                    if (dangan1 == 0)
+                        dangan1 = 42;
                     else
-                        back_train = 0;
+                        dangan1 = 0;
 
                 }
             </script>
@@ -67,12 +77,12 @@
                 <font size="4">&nbsp;&nbsp;&nbsp;单杠二</font>
             </label>
             <script type="text/javascript">
-                function fun() {
+                function fun2() {
 
-                    if (chesk_train == 0)
-                        chesk_train = 1;
+                    if (dangan2 == 0)
+                        dangan2 = 43;
                     else
-                        chesk_train = 0;
+                        dangan2 = 0;
 
                 }
             </script>
@@ -95,12 +105,12 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;双杠一</font>
                 <script type="text/javascript">
-                    function fun() {
+                    function fun3() {
 
-                        if (leg_train == 0)
-                            leg_train = 1;
+                        if (shuanggan1 == 0)
+                            shuanggan1 = 38;
                         else
-                            leg_train = 0;
+                            shuanggan1 = 0;
 
 
                     }
@@ -125,12 +135,12 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;双杠二</font>
                 <script type="text/javascript">
-                    function fun() {
+                    function fun4() {
 
-                        if (shouder_train == 0)
-                            shouder_train = 1;
+                        if (shuanggan2  == 0)
+                            shuanggan2  = 49;
                         else
-                            shouder_train = 0;
+                            shuanggan2  = 0;
 
                     }
                 </script>
@@ -154,11 +164,11 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;俯卧撑</font>
                 <script type="text/javascript">
-                    function fun() {
-                        if (arm_train == 0)
-                            arm_train = 1;
+                    function fun5() {
+                        if (fuwocheng  == 0)
+                            fuwocheng  = 60;
                         else
-                            arm_train = 0;
+                            fuwocheng  = 0;
 
                     }
                 </script>
@@ -183,12 +193,12 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;仰卧起坐</font>
                 <script type="text/javascript">
-                    function fun() {
+                    function fun6() {
 
-                        if (abdomen_train == 0)
-                            abdomen_train = 1;
+                        if (yangwoqizuo  == 0)
+                            yangwoqizuo  = 6;
                         else
-                            abdomen_train = 0;
+                            yangwoqizuo  = 0;
 
                     }
                 </script>
@@ -214,10 +224,10 @@
                 <script type="text/javascript">
                     function fun7() {
 
-                        if (explosive_train == 0)
-                            explosive_train = 1;
+                        if (tpao  == 0)
+                            tpao  = 90;
                         else
-                            explosive_train = 0;
+                            tpao  = 0;
 
                     }
                 </script>
@@ -244,10 +254,10 @@
             <script type="text/javascript">
                 function fun8() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (gun100 == 0)
+                        gun100 = 95;
                     else
-                        stamina_train = 0;
+                        gun100 = 0;
 
 
 
@@ -259,7 +269,7 @@
 
         <div class="checkboxWrapper theme2">
             <input type="checkbox" id="sample9">
-            <label for="sample9" onclick="fun8()">
+            <label for="sample9" onclick="fun9()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -276,12 +286,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun9() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run400  == 0)
+                        run400  = 240;
                     else
-                        stamina_train = 0;
+                        run400  = 0;
 
 
 
@@ -293,7 +303,7 @@
 
         <div class="checkboxWrapper theme2">
             <input type="checkbox" id="sample10">
-            <label for="sample10" onclick="fun8()">
+            <label for="sample10" onclick="fun10()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -309,12 +319,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun10() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run3000  == 0)
+                        run3000 = 480;
                     else
-                        stamina_train = 0;
+                        run3000 = 0;
 
 
 
@@ -326,7 +336,7 @@
 
         <div class="checkboxWrapper theme3">
             <input type="checkbox" id="sample11">
-            <label for="sample11" onclick="fun8()">
+            <label for="sample11" onclick="fun11()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -342,12 +352,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun11() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run400s  == 0)
+                        run400s  = 405;
                     else
-                        stamina_train = 0;
+                        run400s  = 0;
 
 
 
@@ -359,7 +369,7 @@
 
         <div class="checkboxWrapper theme4">
             <input type="checkbox" id="sample12">
-            <label for="sample12" onclick="fun8()">
+            <label for="sample12" onclick="fun12()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -375,12 +385,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun12() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run5  == 0)
+                        run5  = 600;
                     else
-                        stamina_train = 0;
+                        run5  = 0;
 
 
 
@@ -392,7 +402,7 @@
 
         <div class="checkboxWrapper theme5">
             <input type="checkbox" id="sample13">
-            <label for="sample13" onclick="fun8()">
+            <label for="sample13" onclick="fun13()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -408,12 +418,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun13() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (g100  == 0)
+                        g100  = 100;
                     else
-                        stamina_train = 0;
+                        g100  = 0;
 
 
 
@@ -425,7 +435,7 @@
 
         <div class="checkboxWrapper theme6">
             <input type="checkbox" id="sample14">
-            <label for="sample14" onclick="fun8()">
+            <label for="sample14" onclick="fun14()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -441,12 +451,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun14() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (grun3000  == 0)
+                        grun3000  = 520;
                     else
-                        stamina_train = 0;
+                        grun3000  = 0;
 
 
 
@@ -458,7 +468,7 @@
 
         <div class="checkboxWrapper theme7">
             <input type="checkbox" id="sample15">
-            <label for="sample15" onclick="fun8()">
+            <label for="sample15" onclick="fun15()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -472,12 +482,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun15() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run200  == 0)
+                        run200  = 340;
                     else
-                        stamina_train = 0;
+                        run200  = 0;
 
 
 
@@ -489,7 +499,7 @@
 
         <div class="checkboxWrapper theme1">
             <input type="checkbox" id="sample16">
-            <label for="sample16" onclick="fun8()">
+            <label for="sample16" onclick="fun16()">
                 <i>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
@@ -504,12 +514,12 @@
             </label>
 
             <script type="text/javascript">
-                function fun8() {
+                function fun16() {
 
-                    if (stamina_train == 0)
-                        stamina_train = 1;
+                    if (run300  == 0)
+                        run300  = 400;
                     else
-                        stamina_train = 0;
+                        run300  = 0;
 
 
 
@@ -519,16 +529,57 @@
         </div>
 
         <hr>
-        <a onclick="fun9()"><font size="4">确认提交</font></a>
+        <a onclick="funx()"><font size="4">确认提交</font></a>
 
         <script type="text/javascript">
-            function fun9() {
-                $.post()
+
+          
+            var all = dangan1 + dangan2 + shuanggan1 + shuanggan2 + fuwocheng + yangwoqizuo + tpao + gun100 + run400 + run3000 + run400s + run5 + g100 + grun3000 + run200 + run300+1700;
+            function funx() {
+
+               
+               
+                $.post("/PersonalPays/outcome", { "outcome": all }, function (data) { 
+                   
+                    $("#xxx").html("您今天共支出了" + all + "卡路里！");
+                });
 
             }
         </script>
 
     </div>
+
+    <div class="col-md-6">
+
+        <div class="panel panel-success" >
+
+            <div class="panel-heading">
+                <h3 class="panel-title">今日摄入</h3>
+            </div>
+            <div class="panel-body">
+                <div>您今天共摄入：@Model.all_income 卡路里！</div>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="panel panel-success" >
+
+            <div class="panel-heading">
+                <h3 class="panel-title">今日支出</h3>
+            </div>
+            <div class="panel-body">
+                <div id="xxx">您今天共支出了：</div>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+        </div>
+
+
 </div>
 
 

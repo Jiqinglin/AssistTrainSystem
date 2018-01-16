@@ -1,61 +1,67 @@
 ﻿@{
     ViewData["Title"] = "Contact";
 }
-<h2>日常训练</h2>
+<h3>日常训练</h3>
 <hr>
-
+<link rel="stylesheet" type="text/css" href="~/css/suns.css">
 <div class="row">
-    <div class="col-md-3">
-        <a asp-area="" asp-controller="NormalTrains" asp-action="Create">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">每日训练</h3>
-                </div>
-                <div class="panel-body">
-                    这里记录您的每日训练
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                </div>
-            </div>
-        </a>
+    <div class="col-md-12">
+       
+            <ul class="blocks">
+                <a asp-area="" asp-controller="NormalTrains" asp-action="Create">
+                    <li>
+                        每日训练<div class="popup">
+                            <span>
+                                <h3>
+                                    每日训练
+                                </h3>
+                                记录您每日的训练部位，同时达到提醒您的训练强度的效果
+                            </span>
+                        </div>
+                    </li>
+                    </a>
+                <a asp-area="" asp-controller="Home" asp-action="test5">
+                    <li>
+                        每日摄入<div class="popup">
+                            <span>
+                                <h3>
+                                    每日摄入
+                                </h3>
+                               通过早餐打卡，午餐打卡，晚餐打卡，来记录您的每日摄入卡路里。时刻提醒您的卡路里。
+                            </span>
+                        </div>
+                    </li>
+                    </a>
+
+                <a asp-area="" asp-controller="PersonalPays" asp-action="Create">
+                    <li>
+                        每日支出<div class="popup">
+                            <span>
+                                <h3>
+                                    每日支出
+                                </h3>
+                                 根据您每天的训练项目，计算出您今日鱿鱼训练消耗的卡路里。
+                            </span>
+                        </div>
+                    </li>
+                </a>
+</ul>
+         
+     
+        
+     
+
+       
+          
+    
+       
+   
+ 
+
+     
     </div>
-    <div class="col-md-3">
 
-        <a asp-area="" asp-controller="Home" asp-action="test5">
-            <div class="panel panel-success">
-
-                <div class="panel-heading">
-                    <h3 class="panel-title">面板标题</h3>
-                </div>
-                <div class="panel-body">
-                    这里记录您的饮食和睡眠
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-md-3">
-
-        <a asp-area="" asp-controller="PersonalPays" asp-action="Create">
-            <div class="panel panel-success">
-
-                <div class="panel-heading">
-                    <h3 class="panel-title">面板标题</h3>
-                </div>
-                <div class="panel-body">
-                    这里记录您的每日支出
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                </div>
-            </div>
-        </a>
-    </div>
 </div>
+<hr>
+<h4>系统小建议：</h4>
+

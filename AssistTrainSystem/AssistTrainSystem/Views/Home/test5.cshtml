@@ -1,19 +1,23 @@
-﻿@{
+﻿@model AssistTrainSystem.Models.PersonalPay
+@{
     ViewData["Title"] = "Contact";
 }
-<h2>日常训练</h2>
+<br>
+<a asp-action="test2">返回</a>
 <hr>
 
 <div class="row">
     <div class="col-md-3">
-        <a asp-area="" asp-controller="home" asp-action="test4">
+        <a asp-area="" asp-controller="home" asp-action="breakfirst">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">早餐打卡</h3>
                 </div>
                 <div class="panel-body">
-                    您今天早餐共摄入了：
+                    您今天早餐共摄入了：@Model.breakfirset_income 卡路里！
                     <br />
+                    <br />
+                    @Model.breakfirst
                     <br />
                     <br />
                     <br />
@@ -23,15 +27,17 @@
     </div>
     <div class="col-md-3">
 
-        <a asp-area="" asp-controller="Home" asp-action="test4">
+        <a asp-area="" asp-controller="Home" asp-action="lunch">
             <div class="panel panel-success">
 
                 <div class="panel-heading">
                     <h3 class="panel-title">午餐打卡</h3>
                 </div>
                 <div class="panel-body">
-                    您今天午餐共摄入了：
+                    您今天午餐共摄入了：@Model.lunch_income 卡路里！
                     <br />
+                    <br />
+                    @Model.lunch
                     <br />
                     <br />
                     <br />
@@ -42,15 +48,17 @@
 
     <div class="col-md-3">
 
-        <a asp-area="" asp-controller="Home" asp-action="test4">
+        <a asp-area="" asp-controller="Home" asp-action="dinner">
             <div class="panel panel-success">
 
                 <div class="panel-heading">
                     <h3 class="panel-title">晚餐打卡</h3>
                 </div>
                 <div class="panel-body">
-                    您今天晚餐共摄入了：
+                    您今天晚餐共摄入了：@Model.dinner_income 卡路里！
                     <br />
+                    <br />
+                    @Model.dinner
                     <br />
                     <br />
                     <br />
@@ -59,3 +67,5 @@
         </a>
     </div>
 </div>
+
+<h3>您今日共摄入：@Model.all_income 卡路里！</h3>

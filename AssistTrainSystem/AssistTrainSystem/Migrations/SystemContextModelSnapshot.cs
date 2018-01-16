@@ -259,9 +259,21 @@ namespace AssistTrainSystem.Migrations
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<double>("all_income");
+
+                    b.Property<double>("breakfirset_income");
+
+                    b.Property<string>("breakfirst");
+
                     b.Property<DateTime>("create_time");
 
-                    b.Property<double>("income");
+                    b.Property<string>("dinner");
+
+                    b.Property<double>("dinner_income");
+
+                    b.Property<string>("lunch");
+
+                    b.Property<double>("lunch_income");
 
                     b.Property<double>("pay");
 

@@ -71,11 +71,41 @@ namespace AssistTrainSystem.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> test5()
+        {
+
+
+            var last = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            if(last == null||!last.create_time.ToString("MM-dd").Equals(DateTime.Now.ToString("MM-dd")))
+            {
+
+                 var pay = new PersonalPay();
+                pay.user_id = User.Identity.Name;
+                pay.create_time = DateTime.Now;
+                pay.breakfirset_income = 0;
+                pay.lunch_income = 0;
+                pay.dinner_income = 0;
+                pay.all_income = pay.breakfirset_income + pay.lunch_income + pay.dinner_income;
+                _context.Add(pay);
+                _context.SaveChanges();
+                last = pay;
+            }
+         
+            return View(last);
+        }
         public IActionResult test4()
         {
             return View();
         }
-        public IActionResult test5()
+        public IActionResult breakfirst()
+        {
+            return View();
+        }
+        public IActionResult lunch()
+        {
+            return View();
+        }
+        public IActionResult dinner()
         {
             return View();
         }

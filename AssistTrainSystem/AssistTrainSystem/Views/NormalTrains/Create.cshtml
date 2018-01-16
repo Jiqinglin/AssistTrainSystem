@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="~/css/zzsc.css">
 <link rel="stylesheet" type="text/css" href="~/css/fency-checkbox.css">
 
-<h2>Create</h2>
+<h2>Train</h2>
 
 <h4>请勾选你今天需要训练的项目</h4>
 <hr />
@@ -43,10 +43,13 @@
             <script type="text/javascript">
                 function fun()
                 {
+                  
                     if (back_train == 0)
                         back_train = 1;
                     else
                         back_train = 0;
+
+                  
 
                 }
                 </script>
@@ -54,6 +57,8 @@
         </div>
         <!-- -->
         <!-- -->
+   
+
         <div class="checkboxWrapper theme2">
             <input type="checkbox" id="sample2">
             <label for="sample2" onclick="fun2()">
@@ -70,7 +75,7 @@
                 <font size="4">&nbsp;&nbsp;&nbsp;胸部训练</font>
 </label>
             <script type="text/javascript">
-                   function fun() {
+                   function fun2() {
 
                        if (chesk_train == 0)
                            chesk_train = 1;
@@ -99,7 +104,7 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;腿部训练</font>
                 <script type="text/javascript">
-                       function fun() {
+                       function fun3() {
 
                            if (leg_train == 0)
                                leg_train = 1;
@@ -129,7 +134,7 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;肩部训练</font>
                 <script type="text/javascript">
-                       function fun() {
+                       function fun4() {
 
                            if (shouder_train == 0)
                                shouder_train = 1;
@@ -158,7 +163,7 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;臂部训练</font>
                 <script type="text/javascript">
-                       function fun() {
+                       function fun5() {
                            if (arm_train == 0)
                                arm_train = 1;
                            else
@@ -186,7 +191,7 @@
                 </i>
                 <font size="4">&nbsp;&nbsp;&nbsp;腹部训练</font>
                 <script type="text/javascript">
-                       function fun() {
+                       function fun6() {
 
                            if (abdomen_train == 0)
                                abdomen_train = 1;
@@ -262,19 +267,166 @@
             </script>
 
         </div>
-
+        <br/>
+   
         <hr>
         <a onclick="fun9()"><font size="4">确认提交</font></a>
 
         <script type="text/javascript">
             function fun9()
             {
-                $.post()
+             
+              
+                $.post("/NormalTrains/check", {"user_id":"@User.Identity.Name",
+                    "back_train": back_train, "chesk_train": chesk_train, "leg_train": leg_train
+                    , "shouder_train": shouder_train, "arm_train": arm_train, "abdomen_train": abdomen_train,
+                    "stamina_train": stamina_train, "explosive_train": explosive_train
+                }, function (data) {
+
+                    $("#back").css('display', 'block')
+                    $("#chesk").css('display', 'block')
+                    $("#leg").css('display', 'block')
+                    $("#shouder").css('display', 'block')
+                    $("#arm").css('display', 'block')
+                    $("#abdomen").css('display', 'block')
+                    $("#explosive").css('display', 'block')
+                    $("#stamina").css('display', 'block')
+
+                    $("#back").html("你已经连续进行背部训练," + data.back_train + "次");
+                    $("#chesk").html("你已经连续进行胸部训练," + data.chesk_train + "次");
+                    $("#leg").html("你已经连续进行腿部训练," + data.leg_train + "次");
+                    $("#shouder").html("你已经连续进行肩部训练," + data.shouder_train + "次");
+                    $("#arm").html("你已经连续进行臂部训练," + data.arm_train + "次");
+                    $("#abdomen").html("你已经连续进行腹部训练," + data.abdomen_train + "次");
+                    $("#explosive").html("你已经连续进行爆发力训练," + data.explosive_train + "次");
+                    $("#stamina").html("你已经连续进行耐力训练," + data.stamina_train + "次");
+                    if (data.back_train < 5)
+                        $("#back").attr('class', 'alert alert-success');
+                    else if (data.back_train >= 5 && data.back_train < 10)
+                        $("#back").attr('class', 'alert alert-info');
+                    else if (data.back_train >= 10 && data.back_train < 20)
+                        $("#back").attr('class', 'alert alert-warning')
+                    else 
+                        $("#back").attr('class', 'alert alert-danger')
+
+                    if (data.chesk_train < 5)
+                        $("#chesk").attr('class', 'alert alert-success');
+                    else if (data.chesk_train >= 5 && data.chesk_train < 10)
+                        $("#chesk").attr('class', 'alert alert-info');
+                    else if (data.chesk_train >= 10 && data.chesk_train < 20)
+                        $("#chesk").attr('class', 'alert alert-warning')
+                    else
+                        $("#chesk").attr('class', 'alert alert-danger')
+
+                    if (data.leg_train < 5)
+                        $("#leg").attr('class', 'alert alert-success');
+                    else if (data.leg_train >= 5 && data.leg_train < 10)
+                        $("#leg").attr('class', 'alert alert-info');
+                    else if (data.leg_train >= 10 && data.leg_train < 20)
+                        $("#leg").attr('class', 'alert alert-warning')
+                    else
+                        $("#leg").attr('class', 'alert alert-danger')
+
+                    if (data.shouder_train < 5)
+                        $("#shouder").attr('class', 'alert alert-success');
+                    else if (data.shouder_train >= 5 && data.shouder_train < 10)
+                        $("#shouder").attr('class', 'alert alert-info');
+                    else if (data.shouder_train >= 10 && data.shouder_train < 20)
+                        $("#shouder").attr('class', 'alert alert-warning')
+                    else
+                        $("#shouder").attr('class', 'alert alert-danger')
+
+                    if (data.arm_train < 5)
+                        $("#arm").attr('class', 'alert alert-success');
+                    else if (data.arm_train >= 5 && data.arm_train < 10)
+                        $("#arm").attr('class', 'alert alert-info');
+                    else if (data.arm_train >= 10 && data.arm_train < 20)
+                        $("#arm").attr('class', 'alert alert-warning')
+                    else
+                        $("#arm").attr('class', 'alert alert-danger')
+
+                    if (data.abdomen_train < 5)
+                        $("#abdomen").attr('class', 'alert alert-success');
+                    else if (data.abdomen_train >= 5 && data.abdomen_train < 10)
+                        $("#abdomen").attr('class', 'alert alert-info');
+                    else if (data.abdomen_train >= 10 && data.abdomen_train < 20)
+                        $("#abdomen").attr('class', 'alert alert-warning')
+                    else
+                        $("#abdomen").attr('class', 'alert alert-danger')
+
+                    if (data.explosive_train < 5)
+                        $("#explosive").attr('class', 'alert alert-success');
+                    else if (data.explosive_train >= 5 && data.explosive_train < 10)
+                        $("#explosive").attr('class', 'alert alert-info');
+                    else if (data.explosive_train >= 10 && data.explosive_train < 20)
+                        $("#explosive").attr('class', 'alert alert-warning')
+                    else
+                        $("#explosive").attr('class', 'alert alert-danger')
+
+                    if (data.stamina_train < 5)
+                        $("#stamina").attr('class', 'alert alert-success');
+                    else if (data.stamina_train >= 5 && data.stamina_train < 10)
+                        $("#stamina").attr('class', 'alert alert-info');
+                    else if (data.stamina_train >= 10 && data.stamina_train < 20)
+                        $("#stamina").attr('class', 'alert alert-warning')
+                    else
+                        $("#stamina").attr('class', 'alert alert-danger')
+
+
+
+
+
+                        
+                     
+                });
 
             }
             </script>
 
     </div>
+
+    <div class="col-md-6" id="xx">
+        <div id="back" class="alert alert-success" style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行背部训练</strong>结果是成功的。
+        </div>
+
+        <div id="chesk" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行胸部训练</strong>结果是成功的。
+        </div>
+
+        <div id="leg" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行腿部训练</strong>结果是成功的。
+        </div>
+
+        <div id="shouder" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行肩部训练</strong>结果是成功的。
+        </div>
+
+        <div id="arm" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行臂部训练</strong>结果是成功的。
+        </div>
+
+        <div id="abdomen" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行腹部训练</strong>结果是成功的。
+        </div>
+
+        <div id="explosive" class="alert alert-success" style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行爆发力训练</strong>结果是成功的。
+        </div>
+
+        <div id="stamina" class="alert alert-success"  style="display:none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>你已经连续进行耐力训练</strong>结果是成功的。
+        </div>
+    </div>
 </div>
+
 
 

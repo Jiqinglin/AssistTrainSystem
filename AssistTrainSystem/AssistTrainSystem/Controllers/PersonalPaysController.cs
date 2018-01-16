@@ -21,9 +21,151 @@ namespace AssistTrainSystem.Controllers
         // GET: PersonalPays
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.PersonalPay.ToListAsync());
+            
+        }
+        public async Task<IActionResult> outcome(string outcome)
+        {
+            double outcome2 = Convert.ToDouble(outcome);
+         
+            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+
+            string last = pay.create_time.ToString("MM-dd");
+
+            string time = DateTime.Now.ToString("MM-dd");
+            if (time.Equals(last))
+            {
+                pay.pay = outcome2;
+                _context.Update(pay);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var pay2 = new PersonalPay();
+                pay2.create_time = DateTime.Now;
+                pay2.user_id = User.Identity.Name;
+                pay.pay = outcome2;
+                _context.Add(pay2);
+                _context.SaveChanges();
+                ;
+            }
+
+            result res = new result();
+            res.ok = "ok";
+            var ans = Json(res);
+
+            return ans;
         }
 
+        class result
+        {
+            public string ok;
+        }
+
+        
+        [HttpPost]
+        public async Task<IActionResult> breakfirst(string  income,string breakfirst)
+        {
+            double income2 = Convert.ToDouble(income);
+            Console.WriteLine(income2);
+            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+
+            string last = pay.create_time.ToString("MM-dd");
+
+            string time = DateTime.Now.ToString("MM-dd");
+            if(time.Equals(last))
+            {
+                pay.breakfirset_income = income2;
+                pay.breakfirst = breakfirst;
+                pay.all_income = pay.breakfirset_income + pay.lunch_income + pay.dinner_income;
+                _context.Update(pay);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var pay2 = new PersonalPay();
+                pay2.create_time = DateTime.Now;
+                pay2.user_id = User.Identity.Name;
+                pay2.breakfirset_income = income2;
+                pay2.breakfirst = breakfirst;
+                pay2.all_income = pay2.breakfirset_income + pay2.lunch_income + pay2.dinner_income;
+                _context.Add(pay2);
+                _context.SaveChanges();
+;            }
+
+            return RedirectToAction("test5", "Home");
+
+
+
+        }
+
+        public async Task<IActionResult> lunch(string income,string lunch)
+        {
+
+            double income2 = Convert.ToDouble(income);
+            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+
+            string last = pay.create_time.ToString("MM-dd");
+
+            string time = DateTime.Now.ToString("MM-dd");
+            if (time.Equals(last))
+            {
+                pay.lunch_income = income2;
+                pay.lunch = lunch;
+                pay.all_income = pay.breakfirset_income + pay.lunch_income + pay.dinner_income;
+                _context.Update(pay);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var pay2 = new PersonalPay();
+                pay2.create_time = DateTime.Now;
+                pay2.user_id = User.Identity.Name;
+                pay2.lunch_income = income2;
+                pay2.all_income = pay2.breakfirset_income + pay2.lunch_income + pay2.dinner_income;
+                pay2.lunch = lunch;
+                _context.Add(pay2);
+                _context.SaveChanges();
+               
+            }
+
+            return RedirectToAction("test5", "Home");
+
+        }
+
+        public async Task<IActionResult> dinner(string income,string dinner)
+        {
+            double income2 = Convert.ToDouble(income);
+            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+
+            string last = pay.create_time.ToString("MM-dd");
+
+            string time = DateTime.Now.ToString("MM-dd");
+            if (time.Equals(last))
+            {
+                pay.dinner_income = income2;
+                pay.dinner = dinner;
+                pay.all_income = pay.breakfirset_income + pay.lunch_income + pay.dinner_income;
+                _context.Update(pay);
+                _context.SaveChanges();
+            }
+            else
+            {
+                var pay2 = new PersonalPay();
+                pay2.create_time = DateTime.Now;
+                pay2.user_id = User.Identity.Name;
+                pay2.dinner_income = income2;
+                pay2.dinner = dinner;
+                pay2.all_income = pay2.breakfirset_income + pay2.lunch_income + pay2.dinner_income;
+
+                _context.Add(pay2);
+                _context.SaveChanges();
+                
+            }
+
+            return RedirectToAction("test5", "Home");
+        }
         // GET: PersonalPays/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -43,9 +185,10 @@ namespace AssistTrainSystem.Controllers
         }
 
         // GET: PersonalPays/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            return View(pay);
         }
 
         // POST: PersonalPays/Create
