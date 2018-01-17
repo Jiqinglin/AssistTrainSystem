@@ -8,8 +8,8 @@
 <link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="~/css/zzsc.css">
 <link rel="stylesheet" type="text/css" href="~/css/fency-checkbox.css">
-
-<h2>Create</h2>
+<hr>
+<h4><a asp-controller="Home" asp-action="test2">返回</a></h4>
 
 <h4>请勾选你今天已经测试的项目</h4>
 <hr />
@@ -33,7 +33,7 @@
     var run300 = 0;
 </script>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
         <div class="checkboxWrapper theme1">
             <input type="checkbox" id="sample1">
             <label for="sample1" onclick="fun()">
@@ -46,13 +46,14 @@
 					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
 				</svg>
                 </i>
-                <font size="4">单杠一</font>
+                <font size="4">单杠一 </font><font size="2"> ----消耗量=体重（kg）*两次拉伸时下颚位置竖直高度差（m）*2*个数*修正系数0.95
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun() {
                     if (dangan1 == 0)
-                        dangan1 = 42;
+                        dangan1 = 395.5;
                     else
                         dangan1 = 0;
 
@@ -76,13 +77,14 @@
 
 				</svg>
                 </i>
-                <font size="4">单杠二</font>
+                <font size="4">单杠二</font><font size="2"> ----消耗量=体重（kg）*前后两次臀部抬起竖直高度差（m）*2*个数*修正系数0.90
+</font>
             </label>
             <script type="text/javascript">
                 function fun2() {
 
                     if (dangan2 == 0)
-                        dangan2 = 43;
+                        dangan2 = 744.0;
                     else
                         dangan2 = 0;
 
@@ -105,12 +107,13 @@
 					S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14" />
 				</svg>
                 </i>
-                <font size="4">双杠一</font>
+                <font size="4">双杠一</font><font size="2"> ----消耗量=消耗量=体重（kg）*肩部两次起伏的竖直距离差（m）*2*个数*修正系数1.16
+</font>
                 <script type="text/javascript">
                     function fun3() {
 
                         if (shuanggan1 == 0)
-                            shuanggan1 = 38;
+                            shuanggan1 = 210.0;
                         else
                             shuanggan1 = 0;
 
@@ -135,12 +138,13 @@
 
 			</svg>
                 </i>
-                <font size="4">双杠二</font>
+                <font size="4">双杠二</font><font size="2"> ----消耗量=体重（kg）*身体重心下降竖直距离（cm）*2*个数*修正系数1.20
+</font>
                 <script type="text/javascript">
                     function fun4() {
 
                         if (shuanggan2  == 0)
-                            shuanggan2  = 49;
+                            shuanggan2 = 249.6;
                         else
                             shuanggan2  = 0;
 
@@ -164,11 +168,12 @@
 
 				</svg>
                 </i>
-                <font size="4">俯卧撑</font>
+                <font size="4">俯卧撑</font><font size="2"> ----消耗量=体重（kg）*大臂臂长（cm）*个数*修正系数0.88
+</font>
                 <script type="text/javascript">
                     function fun5() {
                         if (fuwocheng  == 0)
-                            fuwocheng  = 60;
+                            fuwocheng = 366.1;
                         else
                             fuwocheng  = 0;
 
@@ -193,12 +198,13 @@
 
 			</svg>
                 </i>
-                <font size="4">仰卧起坐</font>
+                <font size="4">仰卧起坐</font><font size="2"> ----消耗量=频率（次数/min）*BMI*重心起伏的竖直高度差（cm）*修正系数1.13
+</font>
                 <script type="text/javascript">
                     function fun6() {
 
                         if (yangwoqizuo  == 0)
-                            yangwoqizuo  = 6;
+                            yangwoqizuo = 348.0;
                         else
                             yangwoqizuo  = 0;
 
@@ -222,12 +228,13 @@
 
 				</svg>
                 </i>
-                <font size="4">T型跑</font>
+                <font size="4">T型跑</font><font size="2"> ----消耗量=运动强度系数1.036*运动时间（s）*修正系数1.11*指数（指数=30/运动速度）
+</font>
                 <script type="text/javascript">
                     function fun7() {
 
                         if (tpao  == 0)
-                            tpao  = 90;
+                            tpao = 182.4;
                         else
                             tpao  = 0;
 
@@ -250,14 +257,15 @@
 
 				</svg>
                 </i>
-                <font size="4">100米持枪绕杆屈伸返回跑</font>
+                <font size="4">100米持枪绕杆屈伸返回跑</font><font size="2"> ----消耗量=运动强度系数1.368*运动时间（s）*修正系数1.14*指数（指数=30/运动速度）
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun8() {
 
                     if (gun100 == 0)
-                        gun100 = 95;
+                        gun100 = 657.9;
                     else
                         gun100 = 0;
 
@@ -284,14 +292,14 @@
 
 				</svg>
                 </i>
-                <font size="4">400米</font>
+                <font size="4">400米</font><font size="2"> ----耗量=运动强度系数1.368*运动时间（s）*修正系数0.99*指数（指数=30/运动速度）</font>
             </label>
 
             <script type="text/javascript">
                 function fun9() {
 
                     if (run400  == 0)
-                        run400  = 240;
+                        run400 = 435.6;
                     else
                         run400  = 0;
 
@@ -317,14 +325,15 @@
 
 				</svg>
                 </i>
-                <font size="4">3000米</font>
+                <font size="4">3000米</font><font size="2"> ----消耗量=体重（kg）*运动时间（min）*指数*修正系数1.23（指数=30/运动速度（m/s））*运动强度系数1.368
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun10() {
 
                     if (run3000  == 0)
-                        run3000 = 480;
+                        run3000 = 654.0;
                     else
                         run3000 = 0;
 
@@ -350,14 +359,15 @@
 
 				</svg>
                 </i>
-                <font size="4">400米障碍</font>
+                <font size="4">400米障碍</font><font size="2"> ----消耗量=运动强度系数1.368*运动时间（s）*修正系数0.96*指数（指数=30/运动速度）
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun11() {
 
                     if (run400s  == 0)
-                        run400s  = 405;
+                        run400s = 567.0;
                     else
                         run400s  = 0;
 
@@ -383,14 +393,15 @@
 
 				</svg>
                 </i>
-                <font size="4">五公里武装越野</font>
+                <font size="4">五公里武装越野</font><font size="2"> ----消耗量=体重（kg）*运动时间（min）*指数*修正系数1.19（指数=30/运动速度）*运动强度系数1.036
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun12() {
 
                     if (run5  == 0)
-                        run5  = 600;
+                        run5 = 899.3;
                     else
                         run5  = 0;
 
@@ -416,14 +427,15 @@
 
 				</svg>
                 </i>
-                <font size="4">持枪100米障碍</font>
+                <font size="4">持枪100米障碍</font><font size="2"> ----消耗量=运动强度系数1.368*运动时间（s）*修正系数1.33*指数（指数=30/运动速度）
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun13() {
 
                     if (g100  == 0)
-                        g100  = 100;
+                        g100 = 498.0;
                     else
                         g100  = 0;
 
@@ -449,14 +461,15 @@
 
 				</svg>
                 </i>
-                <font size="4">三公里武装越野</font>
+                <font size="4">三公里武装越野</font><font size="2"> ----消耗量=体重（kg）*运动速度（m/s）*指数*修正系数1.13（指数=30/运动速度）*运动强度系数1.368
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun14() {
 
                     if (grun3000  == 0)
-                        grun3000  = 520;
+                        grun3000 = 703.0;
                     else
                         grun3000  = 0;
 
@@ -480,14 +493,15 @@
 
 				</svg>
                 </i>
-                <font size="4">200米障碍</font>
+                <font size="4">200米障碍</font><font size="2"> ----消耗量=运动强度系数1.368*运动时间（s）*修正系数0.96*指数（指数=30/运动速度）
+</font>
             </label>
 
             <script type="text/javascript">
                 function fun15() {
 
                     if (run200  == 0)
-                        run200  = 340;
+                        run200 = 466.0;
                     else
                         run200  = 0;
 
@@ -512,14 +526,14 @@
 
 				</svg>
                 </i>
-                <font size="4">300米障碍</font>
+                <font size="4">300米障碍</font><font size="2"> ----消耗量=运动强度系数1.368*运动时间（s）*修正系数0.99*指数（指数=30/运动速度）</font>
             </label>
 
             <script type="text/javascript">
                 function fun16() {
 
                     if (run300  == 0)
-                        run300  = 400;
+                        run300 = 507.6;
                     else
                         run300  = 0;
 
@@ -551,7 +565,7 @@
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-3">
 
         <div class="panel panel-success" >
 
