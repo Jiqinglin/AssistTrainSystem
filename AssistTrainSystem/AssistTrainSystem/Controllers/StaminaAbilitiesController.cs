@@ -25,9 +25,9 @@ namespace AssistTrainSystem.Controllers
             var staminaAbility = from ee in _context.StaminaAbility select ee;
             staminaAbility = staminaAbility.Where(m => m.user_id == User.Identity.Name);
 
-            List<StaminaAbility> e = await staminaAbility.AsNoTracking().ToListAsync();
+            List<StaminaAbility> e = await staminaAbility.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
-            var lastStamina = await _context.StaminaAbility.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var lastStamina = await _context.StaminaAbility.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             StaminaList staminaList = new StaminaList();
 
@@ -37,8 +37,8 @@ namespace AssistTrainSystem.Controllers
             foreach (var x in e)
             {
                 staminaList.time.Add(x.create_time.ToString("MM-dd"));
-                staminaList.Fourtime.Add(x.fourrun_time.ToString());
-                staminaList.Threetime.Add(x.threerun_time.ToString());
+                staminaList.Fourtime.Add(x.fourrun_score.ToString());
+                staminaList.Threetime.Add(x.threerun_score.ToString());
 
             }
 
@@ -101,9 +101,12 @@ namespace AssistTrainSystem.Controllers
         public async Task<IActionResult> Create([Bind("ID,user_id,create_time,age,fourrun_time,fourrun_score,threerun_time,threerun_score,score")] StaminaAbility staminaAbility,string type)
         {
             staminaAbility.create_time = DateTime.Now;
-            staminaAbility.fourrun_score = (int)staminaAbility.fourrun_time * 10;
-            staminaAbility.threerun_score = (int)staminaAbility.threerun_time * 10;
+            var s = await _context.Fourrun_Score.SingleOrDefaultAsync(m => m.age == staminaAbility.age && m.num == staminaAbility.fourrun_time);
 
+            staminaAbility.fourrun_score = s.score*20+40;
+
+          
+            staminaAbility.threerun_score =(int)(staminaAbility.threerun_time * 2 + 55.4);
             if (type == "yes")
             {
                 _context.Add(staminaAbility);
@@ -112,8 +115,8 @@ namespace AssistTrainSystem.Controllers
 
             Result res = new Result();
 
-            res.Fournum = staminaAbility.fourrun_time.ToString();
-            res.Threenum = staminaAbility.threerun_time.ToString();
+            res.Fournum = staminaAbility.fourrun_score.ToString();
+            res.Threenum = staminaAbility.threerun_score.ToString();
 
             JsonResult result = Json(res);
 

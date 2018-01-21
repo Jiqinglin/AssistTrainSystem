@@ -39,8 +39,21 @@ namespace AssistTrainSystem.Models
 
         public DbSet<AssistTrainSystem.Models.PersonalPay> PersonalPay { get; set; }
 
+        public DbSet<AssistTrainSystem.Models.Pushup_Score> Pushup_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.pushupscore> pushupscore { get; set; }
 
-
+        public DbSet<AssistTrainSystem.Models.Situp_Score> Situp_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Ontheroll_Score> Ontheroll_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Swingflex_Score> Swingflex_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Gunrun_Score> Gunrun_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Fourrun_Score> Fourrun_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Fourhurdle_Score> Fourhurdle_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Fiveoffroad_Score> Fiveoffroad_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Gunhurdle_Score> Gunhurdle_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Threeoffroad_Score> Threeoffroad_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Twohurdle_Score> Twohurdle_Score { get; set; }
+        public DbSet<AssistTrainSystem.Models.Threehurdle_Score> Threehurdle_Score { get; set; }
+       
 
 
     }

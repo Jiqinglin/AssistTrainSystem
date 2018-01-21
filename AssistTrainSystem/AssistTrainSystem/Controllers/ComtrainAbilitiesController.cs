@@ -25,11 +25,11 @@ namespace AssistTrainSystem.Controllers
 
             comtrainAbility = comtrainAbility.Where(m => m.user_id == User.Identity.Name);
 
-            List<ComtrainAbilities> b = await comtrainAbility.AsNoTracking().ToListAsync();
+            List<ComtrainAbilities> b = await comtrainAbility.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
             ComtrainList comtrainList = new ComtrainList();
 
-            comtrainList.lastComtrain = await _context.ComtrainAbilities.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            comtrainList.lastComtrain = await _context.ComtrainAbilities.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             comtrainList.list = b;
 
@@ -103,10 +103,14 @@ namespace AssistTrainSystem.Controllers
         {
 
             comtrainAbilities.create_time = DateTime.Now;
-            comtrainAbilities.gunhurdle_score = (int)comtrainAbilities.gunhurdle_time * 10;
-            comtrainAbilities.threehurdle_score = (int)comtrainAbilities.threehurdle_time * 10;
-            comtrainAbilities.threeoffroad_score = (int)comtrainAbilities.threeoffroad_time * 10;
-            comtrainAbilities.twohurdle_score = (int)comtrainAbilities.twohurdle_time * 10;
+            var s =await  _context.Gunhurdle_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.gunhurdle_time);
+            comtrainAbilities.gunhurdle_score = s.score*20+40;
+            var s2 = await _context.Threeoffroad_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.threeoffroad_time);
+            comtrainAbilities.threeoffroad_score = s2.score*20+40;
+            var s3 = await _context.Threehurdle_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.threehurdle_time);
+            comtrainAbilities.threehurdle_score = s3.score*20+40;
+            var s4 = await _context.Twohurdle_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.twohurdle_time);
+            comtrainAbilities.twohurdle_score = s4.score*20+40;
 
             if (type == "yes")
             {

@@ -26,9 +26,9 @@ namespace AssistTrainSystem.Controllers
             var speedAbility = from ee in _context.SpeedAbility select ee;
             speedAbility = speedAbility.Where(m => m.user_id == User.Identity.Name);
 
-            List<SpeedAbility> e = await speedAbility.AsNoTracking().ToListAsync();
+            List<SpeedAbility> e = await speedAbility.OrderBy(m=>m.create_time).AsNoTracking().ToListAsync();
 
-            var lastSpeed = await _context.SpeedAbility.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var lastSpeed = await _context.SpeedAbility.OrderBy(m=>m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             SpeedList speedList = new SpeedList();
 
@@ -38,8 +38,8 @@ namespace AssistTrainSystem.Controllers
             foreach (var x in e)
             {
                 speedList.time.Add(x.create_time.ToString("MM-dd"));
-                speedList.Truntime.Add(x.Trun_time.ToString());
-                speedList.Gruntime.Add(x.Gunrun_time.ToString());
+                speedList.Truntime.Add(x.Trun_score.ToString());
+                speedList.Gruntime.Add(x.Gunrun_score.ToString());
 
             }
 
@@ -99,12 +99,14 @@ namespace AssistTrainSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,user_id,create_time,Trun_time,Trun_score,Gunrun_time,Gunrun_score,score")] SpeedAbility speedAbility,string type)
+        public async Task<IActionResult> Create([Bind("ID,user_id,create_time,Trun_time,Trun_score,Gunrun_time,Gunrun_score,score,age")] SpeedAbility speedAbility,string type)
         {
 
             speedAbility.create_time = DateTime.Now;
-            speedAbility.Trun_score = (int)speedAbility.Trun_time * 10;
-            speedAbility.Gunrun_score = (int)speedAbility.Gunrun_time * 10;
+          
+            speedAbility.Trun_score =(int)speedAbility.Trun_time * 20 - 160;
+            var s =await _context.Gunrun_Score.SingleOrDefaultAsync(m => m.age == speedAbility.age && m.num == speedAbility.Gunrun_time);
+            speedAbility.Gunrun_score = s.score*20+40;
 
             if (type == "yes")
             {
@@ -114,8 +116,8 @@ namespace AssistTrainSystem.Controllers
 
             Result res = new Result();
 
-            res.Trunnum = speedAbility.Trun_time.ToString();
-            res.Gunrunnum = speedAbility.Gunrun_time.ToString();
+            res.Trunnum = speedAbility.Trun_score.ToString();
+            res.Gunrunnum = speedAbility.Gunrun_score.ToString();
 
             JsonResult result = Json(res);
 

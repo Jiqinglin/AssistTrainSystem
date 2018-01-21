@@ -23,6 +23,8 @@ namespace AssistTrainSystem.Models
         public int Gunrun_score { get; set; }
         //总分数
         public int score { get; set; }
+        //年龄
+        public int age { get; set; }
 
 
     }

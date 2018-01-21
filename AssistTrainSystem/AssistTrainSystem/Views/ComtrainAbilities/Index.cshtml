@@ -332,9 +332,9 @@
 
                                         for (var i = 0, l = params.length; i < l; i++) {
                                             if (params[i].seriesType === 'line') {
-                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + 'h';
+                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + '分';
                                             } else {
-                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + '个';
+                                                res += '<br/>' + params[i].seriesName + ' : ' + (params[i].value ? params[i].value : '-') + '分';
                                             }
                                         }
                                         return res;

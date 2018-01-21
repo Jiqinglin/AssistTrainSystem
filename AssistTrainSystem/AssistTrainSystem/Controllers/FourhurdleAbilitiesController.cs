@@ -27,9 +27,9 @@ namespace AssistTrainSystem.Controllers
 
             FourhurdleList list = new FourhurdleList();
 
-            list.lastFourhurdle = await _context.FourhurdleAbilities.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            list.lastFourhurdle = await _context.FourhurdleAbilities.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
-            list.list = await fourhurdleability.AsNoTracking().ToListAsync();
+            list.list = await fourhurdleability.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
             foreach (var x in list.list)
             {
@@ -101,7 +101,8 @@ namespace AssistTrainSystem.Controllers
         public async Task<IActionResult> Create([Bind("ID,user_id,create_time,age,fourhurdle_time")] FourhurdleAbilities fourhurdleAbilities,string type)
         {
             fourhurdleAbilities.create_time = DateTime.Now;
-            fourhurdleAbilities.fourhurdle_score = (Int32) fourhurdleAbilities.fourhurdle_time * 10;
+            var s = await _context.Fourhurdle_Score.SingleOrDefaultAsync(m => m.age == fourhurdleAbilities.age && m.num == fourhurdleAbilities.fourhurdle_time);
+            fourhurdleAbilities.fourhurdle_score = s.score*20+40;
 
             if(type=="yes")
             {

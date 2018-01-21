@@ -30,9 +30,9 @@ namespace AssistTrainSystem.Controllers
 
             var bodyAbility = from bb in _context.BodyAbility select bb;
             bodyAbility = bodyAbility.Where(m => m.user_id == User.Identity.Name);
-            List<BodyAbility> b = await bodyAbility.AsNoTracking().ToListAsync();
+            List<BodyAbility> b = await bodyAbility.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
-            var lastAbilit = await _context.BodyAbility.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var lastAbilit = await _context.BodyAbility.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
             BodyList list = new BodyList();
             list.alllist = b;
             list.lastlist = lastAbilit;

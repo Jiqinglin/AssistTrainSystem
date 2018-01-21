@@ -26,9 +26,9 @@ namespace AssistTrainSystem.Controllers
             fiveoffroadability = fiveoffroadability.Where(m => m.user_id == User.Identity.Name);
             FiveoffroadList list = new FiveoffroadList();
 
-            list.lastFiveoffroad = await _context.FiveoffroadAbilities.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            list.lastFiveoffroad = await _context.FiveoffroadAbilities.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
-            list.list = await fiveoffroadability.AsNoTracking().ToListAsync();
+            list.list = await fiveoffroadability.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
             foreach (var x in list.list)
             {
@@ -102,7 +102,9 @@ namespace AssistTrainSystem.Controllers
         {
             fiveoffroadAbilities.create_time = DateTime.Now;
 
-            fiveoffroadAbilities.fiveoffroad_score =(Int32) fiveoffroadAbilities.fiveoffroad_time * 10;
+            var s =await  _context.Fiveoffroad_Score.SingleOrDefaultAsync(m => m.age == fiveoffroadAbilities.age && m.num == fiveoffroadAbilities.fiveoffroad_time);
+
+            fiveoffroadAbilities.fiveoffroad_score = s.score*20+40;
 
             if (type == "yes")
             {

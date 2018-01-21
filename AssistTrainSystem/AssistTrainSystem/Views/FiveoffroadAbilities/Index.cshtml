@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label id="age2" name="age2" class="control-label">5公里越野</label>
+                        <label id="age2" name="age2" class="control-label">年龄</label>
                         <input id="age" name="age" class="form-control" />
 
                     </div>
@@ -48,7 +48,7 @@
 
                             var data = $("#formData").serialize();
 
-                            $.post("/FourhurdleAbilities/Create", data, function (data) {
+                            $.post("/FiveoffroadAbilities/Create", data, function (data) {
 
                                 myChart.setOption({
 
@@ -74,7 +74,7 @@
 
                                 var data = $("#formData").serialize();
 
-                                $.post("/FourhurdleAbilities/Create", data, function (data) {
+                                $.post("/FiveoffroadAbilities/Create", data, function (data) {
 
                                 myChart.setOption({
 
@@ -200,8 +200,8 @@
                             var lineColor = '#189cbb';
                             var xAxisData = time;
                             var seriesData = num;
-                            var minData = '15%';
-                            var maxData = '55%';
+                            var minData = '最差成绩';
+                            var maxData = '最好成绩';
                             var markArea = {
                                 silent: true,
                                 label: {

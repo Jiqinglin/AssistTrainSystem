@@ -24,9 +24,9 @@ namespace AssistTrainSystem.Controllers
             var energyAbility = from ee in _context.EnergyAbility select ee;
             energyAbility = energyAbility.Where(m => m.user_id == User.Identity.Name);
 
-            List<EnergyAbility> e = await energyAbility.AsNoTracking().ToListAsync();
+            List<EnergyAbility> e = await energyAbility.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
-            var lastEnergy = await _context.EnergyAbility.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var lastEnergy = await _context.EnergyAbility.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             EnergyList energyList = new EnergyList();
 
@@ -66,7 +66,7 @@ namespace AssistTrainSystem.Controllers
             {
                 return NotFound();
             }
-
+            
             var energyAbility = await _context.EnergyAbility
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (energyAbility == null)
@@ -88,16 +88,35 @@ namespace AssistTrainSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,user_id,horbara_num,horbarb_num,doubara_num,doubarb_num,pushup_num,situp_num")] EnergyAbility energyAbility,string type)
+        public async Task<IActionResult> Create([Bind("ID,user_id,horbara_num,horbarb_num,doubara_num,doubarb_num,pushup_num,situp_num,age")] EnergyAbility energyAbility,string type)
         {
 
             energyAbility.create_time = DateTime.Now;
-            energyAbility.horbara_score = energyAbility.horbara_num * 20;
-            energyAbility.horbarb_score = energyAbility.horbarb_num * 20;
-            energyAbility.doubara_score = energyAbility.doubara_num * 20;
-            energyAbility.doubarb_score = energyAbility.doubarb_num * 20;
-            energyAbility.pushup_score = energyAbility.pushup_num * 20;
-            energyAbility.situp_score = energyAbility.situp_num * 20;
+            var s = await _context.Horbara_Score.SingleOrDefaultAsync(m => m.age == energyAbility.age && m.num == energyAbility.horbara_num);
+            energyAbility.horbara_score = s.score;
+            var s2 = await _context.Ontheroll_Score.SingleOrDefaultAsync(m => m.age == energyAbility.age && m.num == energyAbility.horbarb_num);
+            if (s2.score == 1) s2.score = 60;
+            else if (s2.score == 2) s2.score = 80;
+            else s2.score = 100;
+            energyAbility.horbarb_score = s2.score;
+            if (energyAbility.doubara_num <= 8)
+                energyAbility.doubara_score = 60;
+            else if (energyAbility.doubara_num > 8 && energyAbility.doubara_num <= 12)
+                energyAbility.doubara_score = 80;
+            else
+                energyAbility.doubara_score = 100;
+            var s3 = await _context.Swingflex_Score.SingleOrDefaultAsync(m => m.age == energyAbility.age && m.num == energyAbility.doubarb_num);
+            if (s3.score == 1) s3.score = 60;
+            else if (s3.score == 2) s3.score = 80;
+            else s3.score = 100;
+            energyAbility.doubarb_score = s3.score;
+            var s4 = await _context.Pushup_Score.SingleOrDefaultAsync(m => m.age == energyAbility.age && m.num == energyAbility.pushup_num);
+
+            energyAbility.pushup_score = s4.score;
+            var s5 = await _context.Situp_Score.SingleOrDefaultAsync(m => m.age == energyAbility.age && m.num == energyAbility.situp_num);
+            energyAbility.situp_score = s5.score;
+
+            energyAbility.score = (int)(energyAbility.horbara_score + energyAbility.horbarb_score + energyAbility.doubara_score + energyAbility.doubarb_score + energyAbility.doubarb_score + energyAbility.pushup_score + energyAbility.situp_score) / 7;
 
             if (type=="yes")
             {

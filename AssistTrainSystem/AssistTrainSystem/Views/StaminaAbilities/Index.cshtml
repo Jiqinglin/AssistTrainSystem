@@ -58,7 +58,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.fourrun_time, data.fournum]
+                                            data: [@Model.laststamina.fourrun_score, data.fournum]
                                         }
                                     ]
 
@@ -71,7 +71,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.threerun_time, data.threenum]
+                                            data: [@Model.laststamina.threerun_score, data.threenum]
                                         }
                                     ]
 
@@ -97,7 +97,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.fourrun_time, data.fournum]
+                                            data: [@Model.laststamina.fourrun_score, data.fournum]
                                         }
                                     ]
 
@@ -110,7 +110,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.threerun_time, data.threenum]
+                                            data: [@Model.laststamina.threerun_score, data.threenum]
                                         }
                                     ]
 
@@ -164,7 +164,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.fourrun_time]
+                                            data: [@Model.laststamina.fourrun_score]
                                         }
                                     ]
                                 };
@@ -212,7 +212,7 @@
                                             name: '微博情感倾向对比',
                                             type: 'bar',
                                             barWidth: '60%',
-                                            data: [@Model.laststamina.threerun_time]
+                                            data: [@Model.laststamina.threerun_score]
                                         }
                                     ]
                                 };
@@ -294,7 +294,7 @@
                                         trigger: 'axis',
                                         formatter: function (params) {
                                             return params[0].name + '<br/>'
-                                                + params[0].seriesName + ' : ' + params[0].value + ' (m^3/s)<br/>';
+                                                + params[0].seriesName + ' : ' + params[0].value + '<br/>';
                                         },
                                         axisPointer: {
                                             animation: false
@@ -350,13 +350,13 @@
                                         {
                                             name: '400米跑',
                                             type: 'value',
-                                            max: 60
+                                            max: 100
                                         },
                                         {
                                             gridIndex: 1,
                                             name: '3000米跑',
                                             type: 'value',
-                                            max: 60,
+                                            max: 100,
                                             inverse: true
                                         }
                                     ],

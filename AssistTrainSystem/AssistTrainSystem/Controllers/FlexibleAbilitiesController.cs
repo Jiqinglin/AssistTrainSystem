@@ -26,14 +26,14 @@ namespace AssistTrainSystem.Controllers
             flexibleability = flexibleability.Where(m => m.user_id == User.Identity.Name);
             FlexibleList list = new FlexibleList();
 
-            list.lastFlexible = await _context.FlexiableAbility.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            list.lastFlexible = await _context.FlexiableAbility.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
-            list.list = await flexibleability.AsNoTracking().ToListAsync();
+            list.list = await flexibleability.OrderBy(m => m.create_time).AsNoTracking().ToListAsync();
 
             foreach(var x in list.list)
             {
                 list.timelist.Add(x.create_time.ToString("MM-dd"));
-                list.numlist.Add(x.flexible_num.ToString());
+                list.numlist.Add(x.flexible_score.ToString());
             }
             return View(list);
         }
@@ -98,22 +98,17 @@ namespace AssistTrainSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,user_id,create_time,flexible_num")] FlexibleAbility flexibleAbility)
         {
-
-            if (flexibleAbility.flexible_num < 4)
-                flexibleAbility.flexible_score = 4;
-            else if (flexibleAbility.flexible_num >= 4 && flexibleAbility.flexible_num < 8)
-                flexibleAbility.flexible_score = 3;
-            else if (flexibleAbility.flexible_num >= 8 && flexibleAbility.flexible_num < 12)
-                flexibleAbility.flexible_score = 2;
-            else
-                flexibleAbility.flexible_score = 1;
+            flexibleAbility.flexible_score = flexibleAbility.flexible_num * 4 + 60;
+         
+           
+              
             flexibleAbility.create_time = DateTime.Now;
                 _context.Add(flexibleAbility);
                 await _context.SaveChangesAsync();
 
             Result res = new Result();
 
-            res.num = flexibleAbility.flexible_num.ToString();
+            res.num = flexibleAbility.flexible_score.ToString();
 
             JsonResult result = Json(res);
             return result;

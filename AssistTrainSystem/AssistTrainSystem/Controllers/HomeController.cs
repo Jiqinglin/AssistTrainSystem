@@ -114,9 +114,44 @@ namespace AssistTrainSystem.Controllers
         {
             return View();
         }
-        public IActionResult test8()
+        public async Task<IActionResult> test8()
         {
-            return View();
+
+            //从数据库提取用户
+            User user = await _context.User.SingleOrDefaultAsync(m => m.name == User.Identity.Name);
+            //从数据库中提取人员基本信息表,
+            var bodyAbility = from bb in _context.BodyAbility select bb;
+            bodyAbility = bodyAbility.Where(m => m.user_id == User.Identity.Name);
+            List<BodyAbility> b = await bodyAbility.AsNoTracking().ToListAsync();
+
+            UserAbility list = new UserAbility(user, b);
+
+
+
+
+
+            foreach (var x in b)
+            {
+                list.listtime.Add(x.create_time.Date.ToString("yyyy-MM-dd"));
+                List<string> item1 = new List<string>();
+                List<List<string>> temp = new List<List<string>>();
+                item1.Add(x.bfp.ToString());
+                item1.Add(x.bmi.ToString());
+                item1.Add((x.weight * 1000000).ToString());
+                item1.Add(x.user_id.ToString());
+                item1.Add(x.create_time.Date.ToString("yyyy-MM-dd"));
+
+                temp.Add(item1);
+
+
+
+                list.series.Add(temp);
+
+            }
+
+
+            return View(list);
+
         }
         public IActionResult test9()
         {
