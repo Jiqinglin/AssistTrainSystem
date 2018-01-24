@@ -1,4 +1,4 @@
-﻿
+﻿@model AssistTrainSystem.Controllers.HomeController.BaseAbility
 <script src="~/js/echarts.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <h3>可视化数据</h3>
@@ -10,87 +10,139 @@
 
         var myChart = echarts.init(document.getElementById('main'));
 
-        option = {
-            backgroundColor: '#5580A1',
+                     var time = new Array();
+
+                     var energy = new Array();
+
+                     var flexible = new Array();
+
+                     var stamina = new Array();
+
+                     var speed = new Array();
+
+                                @foreach(var x in Model.timelist)
+                                {
+                                    <text>
+                                        time.push('@x');
+                                    </text>
+
+                                }
+
+                                @foreach(var x in Model.energylist)
+                                {
+                                    <text>
+                                        energy.push('@x.score');
+                                    </text>
+
+                                }
+
+                                        @foreach(var x in Model.flexiblelist)
+                                {
+                                    <text>
+                                        flexible.push('@x.flexible_score');
+                                    </text>
+
+                                }
+
+
+                                  @foreach(var x in Model.speedlist)
+                                {
+                                    <text>
+                                        speed.push('@x.score');
+                                    </text>
+
+                                }
+
+
+                                        @foreach(var x in Model.staminalist)
+                                {
+                                    <text>
+                                        stamina.push('@x.score');
+                                    </text>
+
+                                }
+
+                                option = {
+                                    backgroundColor: '#5580A1',
             title: {
-                bottom: -5,
+                                        bottom: -5,
                 text: '基础训练数据趋势',
                 subtext: ''
             },
             tooltip: {
-                trigger: 'axis'
+                                        trigger: 'axis'
             },
             legend: {
-                data: ['力量训练', '柔韧训练', '速度训练', '耐力训练']
+                                        data: ['力量训练', '柔韧训练', '速度训练', '耐力训练']
             },
             xAxis: {
-                axisTick: {
-                    alignWithLabel: true
-                },
-                data: ["2012", "2013", "2014", "2015", "2016"]
+                                        axisTick: {
+                                            alignWithLabel: true
+                                        },
+                data: time
             },
             yAxis: [{
-                type: 'value',
+                                        type: 'value',
                 name: '综合评分',
                 min: 0,
                 max: 300,
                 position: 'right',
                 axisLabel: {
-                    formatter: '{value} %'
+                                            formatter: '{value} %'
                 }
-            }, {
-                type: 'value',
+                                    }, {
+                                        type: 'value',
                 name: '综合评分',
                 min: 0,
                 max: 2000,
                 position: 'left'
-            }],
+                                    }],
             series: [{
-                name: '力量训练',
+                                        name: '力量训练',
                 type: 'line',
                 label: {
-                    normal: {
-                        show: true,
+                                            normal: {
+                                                show: true,
                         position: 'top',
                     }
-                },
+                                        },
                 lineStyle: {
-                    normal: {
-                        width: 3,
+                                            normal: {
+                                                width: 3,
                         shadowColor: 'rgba(0,0,0,0.4)',
                         shadowBlur: 10,
                         shadowOffsetY: 10
-                    }
+                                            }
                 },
-                data: [90.6, 246.9, 144.6, 87.2, 17.7]
+                data: energy
             }, {
-                name: '柔韧训练',
+                                        name: '柔韧训练',
                 type: 'line',
                 label: {
-                    normal: {
-                        show: true,
+                                            normal: {
+                                                show: true,
                         position: 'top',
                     }
-                },
+                                        },
                 lineStyle: {
-                    normal: {
-                        width: 3,
+                                            normal: {
+                                                width: 3,
                         shadowColor: 'rgba(0,0,0,0.4)',
                         shadowBlur: 10,
                         shadowOffsetY: 10
-                    }
+                                            }
                 },
-                data: [35.1, 38, 37.7, 22.9, 17.7]
+                data: flexible
             }, {
-                name: '速度训练',
+                                        name: '速度训练',
                 type: 'bar',
                 yAxisIndex: 1,
-                data: [32.4, 112.4, 274.9, 514.6, 819.2]
+                data: speed
             }, {
-                name: '耐力训练',
+                                        name: '耐力训练',
                 type: 'bar',
                 yAxisIndex: 1,
-                data: [602.8, 831.7, 1144.8, 1407, 1655.7]
+                data: stamina
             }]
         };
 
@@ -99,3 +151,67 @@
 
     </script>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+       
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">力量成绩预测</h3>
+                </div>
+                <div class="panel-body" style="height:200px">
+                 您的单杠一（引体向上）预测成绩：<font size="3">@Model.horbara</font> 分数
+                 您的单杠二 （卷身上）预测成绩：<font size="3">@Model.horbrab</font> 分数
+                 您的双杆一 （屈臂伸） 预测成绩：<font size="3">@Model.doubara</font> 分数
+                 您的双杆二 （摆动屈臂伸）预测成绩：<font size="3">@Model.doubrab</font> 分数
+                 您的俯卧撑预测成绩：<font size="3">@Model.pushup</font> 分数
+                 您的仰卧起坐：<font size="3">@Model.situp</font> 分数
+                </div>
+            </div>
+       
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">柔韧成绩预测</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的柔韧预测成绩：<font size="3">@Model.flexible</font> 分数
+            
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">速度成绩预测</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的T型跑预测成绩：<font size="3">@Model.trun</font> 分数
+                您的100米持枪绕杆跑预测成绩：<font size="3">@Model.grun</font> 分数
+             
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">耐力成绩预测</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的400米跑预测成绩：<font size="3">@Model.four</font> 分数
+                您的3000米跑预测成绩：<font size="3">@Model.three</font> 分数
+
+            </div>
+        </div>
+
+    </div>
+    </div>

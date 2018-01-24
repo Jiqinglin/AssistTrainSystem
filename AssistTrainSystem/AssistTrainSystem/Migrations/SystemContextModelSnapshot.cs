@@ -59,6 +59,8 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<double>("gunhurdle_time");
 
+                    b.Property<int>("score");
+
                     b.Property<int>("threehurdle_score");
 
                     b.Property<double>("threehurdle_time");
@@ -127,7 +129,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -183,7 +185,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -219,7 +221,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -251,7 +253,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -503,7 +505,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -519,7 +521,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 
@@ -535,7 +537,7 @@ namespace AssistTrainSystem.Migrations
 
                     b.Property<int>("age");
 
-                    b.Property<int>("num");
+                    b.Property<double>("num");
 
                     b.Property<int>("score");
 

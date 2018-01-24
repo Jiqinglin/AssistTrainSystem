@@ -107,6 +107,7 @@ namespace AssistTrainSystem.Controllers
 
           
             staminaAbility.threerun_score =(int)(staminaAbility.threerun_time * 2 + 55.4);
+            staminaAbility.score = (staminaAbility.fourrun_score + staminaAbility.threerun_score) / 2;
             if (type == "yes")
             {
                 _context.Add(staminaAbility);

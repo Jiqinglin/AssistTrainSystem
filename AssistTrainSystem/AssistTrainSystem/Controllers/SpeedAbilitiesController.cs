@@ -108,6 +108,8 @@ namespace AssistTrainSystem.Controllers
             var s =await _context.Gunrun_Score.SingleOrDefaultAsync(m => m.age == speedAbility.age && m.num == speedAbility.Gunrun_time);
             speedAbility.Gunrun_score = s.score*20+40;
 
+            speedAbility.score = (speedAbility.Trun_score + speedAbility.Gunrun_score) / 2;
+
             if (type == "yes")
             {
                 _context.Add(speedAbility);

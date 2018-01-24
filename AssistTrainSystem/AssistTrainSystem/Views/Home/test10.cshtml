@@ -1,4 +1,4 @@
-﻿
+﻿@model AssistTrainSystem.Controllers.HomeController.TrainAbility
 <script src="~/js/echarts.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <h3>可视化数据</h3>
@@ -9,6 +9,49 @@
     <script type="text/javascript">
 
         var myChart = echarts.init(document.getElementById('main'));
+
+
+
+        var time = new Array();
+
+        var fourhurdle = new Array();
+
+        var fiveoffroad = new Array();
+
+        var comtrain = new Array();
+
+           @foreach(var x in Model.timelist)
+                                {
+                                    <text>
+                                        time.push('@x');
+                                    </text>
+
+                                }
+
+                                        @foreach(var x in Model.fourhurdle)
+                                {
+                                    <text>
+                                        fourhurdle.push('@x.fourhurdle_score');
+                                    </text>
+
+                                }
+
+                                        @foreach(var x in Model.fiveoffroad)
+                                {
+                                    <text>
+                                        fiveoffroad.push('@x.fiveoffroad_score');
+                                    </text>
+
+                                }
+
+
+                                        @foreach(var x in Model.comtrain)
+                                {
+                                    <text>
+                                        comtrain.push('@x.score');
+                                    </text>
+
+                                }
 
         option = {
             tooltip: {
@@ -39,7 +82,7 @@
                 axisTick: {
                     alignWithLabel: true
                 },
-                data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                data: time
             }],
             dataZoom: [{
                 type: 'slider',
@@ -100,7 +143,7 @@
                         shadowOffsetY: 10
                     }
                 },
-                data: [1, 13, 37, 35, 15, 13, 25, 21, 6, 45, 32, 2]
+                data: fourhurdle
             }, {
                 name: '五公里武装越野',
                 type: 'bar',
@@ -111,7 +154,7 @@
                         position: 'top'
                     }
                 },
-                data: [22, 22, 23, 77, 24, 55, 55, 89, 98, 164, 106, 224]
+                data: fiveoffroad
             }, {
                 name: '综合应用训练',
                 type: 'bar',
@@ -122,7 +165,7 @@
                         position: 'top'
                     }
                 },
-                data: [201, 222, 223, 777, 244, 255, 555, 879, 938, 1364, 1806, 2324]
+                data: comtrain
             }]
         };
 
@@ -130,4 +173,53 @@
 
 
     </script>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">400米障碍成绩预测</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的400米障碍 预测成绩：<font size="3">@Model.four</font> 分数
+          
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">五公里武装越野成绩预测</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的五公里武装越野预测成绩：<font size="3">@Model.five</font> 分数
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">综合应用训练成绩</h3>
+            </div>
+            <div class="panel-body" style="height:200px">
+                您的携枪100米障碍预测成绩：<font size="3">@Model.gunhurdle</font> 分数
+                您的三公里越野预测成绩：<font size="3">@Model.threeoffroad</font> 分数
+                您的300米障碍预测成绩：<font size="3">@Model.threehurdle</font> 分数
+                您的200米障碍预测成绩：<font size="3">@Model.twohurdle</font> 分数
+
+            </div>
+        </div>
+
+    </div>
+
+    
 </div>

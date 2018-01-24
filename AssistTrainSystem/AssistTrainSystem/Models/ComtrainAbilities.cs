@@ -34,5 +34,7 @@ namespace AssistTrainSystem.Models
         public double threehurdle_time { get; set; }
         //300米障碍分数
         public int threehurdle_score { get; set; }
+        //总分数
+        public int score { get; set; }
     }
 }

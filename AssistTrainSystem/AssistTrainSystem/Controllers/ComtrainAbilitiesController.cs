@@ -99,10 +99,10 @@ namespace AssistTrainSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,user_id,create_time,age,gunhurdle_time,gunhurdle_score,threeoffroad_time,threeoffroad_score,twohurdle_time,twohurdle_score,threehurdle_time,threehurdle_score")] ComtrainAbilities comtrainAbilities,string type)
+        public async Task<IActionResult> Create([Bind("ID,user_id,create_time,age,gunhurdle_time,gunhurdle_score,threeoffroad_time,threeoffroad_score,twohurdle_time,twohurdle_score,threehurdle_time,threehurdle_score,score")] ComtrainAbilities comtrainAbilities,string type)
         {
 
-            comtrainAbilities.create_time = DateTime.Now;
+            /*comtrainAbilities.create_time = DateTime.Now;
             var s =await  _context.Gunhurdle_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.gunhurdle_time);
             comtrainAbilities.gunhurdle_score = s.score*20+40;
             var s2 = await _context.Threeoffroad_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.threeoffroad_time);
@@ -112,11 +112,14 @@ namespace AssistTrainSystem.Controllers
             var s4 = await _context.Twohurdle_Score.SingleOrDefaultAsync(m => m.age == comtrainAbilities.age && m.num == comtrainAbilities.twohurdle_time);
             comtrainAbilities.twohurdle_score = s4.score*20+40;
 
-            if (type == "yes")
-            {
+            comtrainAbilities.score = (comtrainAbilities.gunhurdle_score + comtrainAbilities.threehurdle_score
+                + comtrainAbilities.threehurdle_score + comtrainAbilities.twohurdle_score) / 4;
+                */
+          //  if (type == "yes")
+            //{
                 _context.Add(comtrainAbilities);
                 await _context.SaveChangesAsync();
-            }
+            //}
 
             Result res = new Result();
 
