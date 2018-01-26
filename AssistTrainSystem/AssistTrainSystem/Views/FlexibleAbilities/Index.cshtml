@@ -35,7 +35,7 @@
                             var data = $("#formData").serialize();
 
                             $.post("/FlexibleAbilities/Create", data, function (data) {
-
+                                $("#suggest").html(data.ans);
                                 myChart.setOption({
 
                                     series: [
@@ -61,6 +61,15 @@
 
                             var num = $("#flexible_num").val();
                             var score = num * 4 + 60;
+
+                            var a = document.getElementById("suggest");
+                            a.innerHTML = "";
+                            if (score < 60)
+                                a.innerHTML += "您的柔韧性较差，需要多拉韧带";
+                            else if (score > 60 && score <= 80)
+                                a.innerHTML += "您的柔韧性一般，需要适当锻炼";
+                            else
+                                a.innerHTML += "您的柔韧性很好";
                              myChart.setOption({
 
                                     series: [
@@ -86,9 +95,11 @@
                     <script type="text/javascript">
 
                     </script>
-                    <div>
-                        <p>系统建议：</p>
-                        <div style="height:207px">
+                    <p>系统建议：</p>
+                    <div id="suggest" style="height:207px">
+
+
+                        <div>
                         </div>
                     </div>
                 </form>

@@ -78,6 +78,7 @@
                                     }
                                 ]
                                     });
+                                    $("#suggest").html(data.ans);
 
 
 
@@ -109,6 +110,7 @@
                                     }
                                 ]
                                     });
+                                    $("#suggest").html(data.ans);
 
 
 
@@ -126,9 +128,11 @@
                     <script type="text/javascript">
 
                     </script>
-                    <div>
-                        <p>系统建议：</p>
-                        <div style="height:116px">
+                    <p>系统建议：</p>
+                    <div id="suggest" style="height:116px">
+
+
+                        <div>
                         </div>
                     </div>
                 </form>

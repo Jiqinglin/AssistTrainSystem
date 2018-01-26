@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AssistTrainSystem.Models.PersonalPay
+@{
     ViewData["Title"] = "Contact";
 }
 <h3>日常训练</h3>
@@ -64,4 +65,29 @@
 </div>
 <hr>
 <h4>系统小建议：</h4>
+<hr>
+@if (Model.create_time.ToString("MM-dd") == DateTime.Now.ToString("MM-dd"))
+{
+    @if (Model.pay == 0 && Model.all_income == 0)
+    {
+        <h4>请先打卡</h4>
+
+    }
+    else
+    {
+      @if (Model.pay > Model.all_income)
+         {
+        <h4>您的支出大于摄入，请及时补充能量</h4>
+
+        }
+        else
+        {
+        <h4>您的输入大于支出，请多锻炼身体，不要让脂肪堆积</h4>
+
+
+        }
+    }
+ }
+
+
 

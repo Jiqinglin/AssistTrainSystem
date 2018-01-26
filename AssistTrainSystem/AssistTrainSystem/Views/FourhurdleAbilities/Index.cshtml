@@ -45,7 +45,7 @@
                             var data = $("#formData").serialize();
 
                             $.post("/FourhurdleAbilities/Create", data, function (data) {
-
+                                $("#suggest").html(data.ans);
                                 myChart.setOption({
 
                                     series: [
@@ -71,7 +71,7 @@
                                 var data = $("#formData").serialize();
 
                                 $.post("/FourhurdleAbilities/Create", data, function (data) {
-
+                                    $("#suggest").html(data.ans);
                                 myChart.setOption({
 
                                     series: [
@@ -100,9 +100,11 @@
                     <script type="text/javascript">
 
                     </script>
-                    <div>
-                        <p>系统建议：</p>
-                        <div style="height:207px">
+                    <p>系统建议：</p>
+                    <div id="suggest" style="height:207px">
+
+
+                        <div>
                         </div>
                     </div>
                 </form>

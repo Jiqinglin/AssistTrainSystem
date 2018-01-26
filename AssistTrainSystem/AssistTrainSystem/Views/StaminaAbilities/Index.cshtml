@@ -50,7 +50,7 @@
                             var data = $("#formData").serialize();
 
                             $.post("/StaminaAbilities/Create", data, function (data) {
-
+                                $("#suggest").html(data.ans);
                                 myChart.setOption({
 
                                     series: [
@@ -89,7 +89,7 @@
                             var data = $("#formData").serialize();
 
                             $.post("/StaminaAbilities/Create", data, function (data) {
-
+                                $("#suggest").html(data.ans);
                                   myChart.setOption({
 
                                     series: [
@@ -225,9 +225,11 @@
                     <script type="text/javascript">
 
                     </script>
-                    <div>
-                        <p>系统建议：</p>
-                        <div style="height:116px">
+                    <p>系统建议：</p>
+                    <div id="suggest" style="height:116px">
+
+
+                        <div>
                         </div>
                     </div>
                 </form>

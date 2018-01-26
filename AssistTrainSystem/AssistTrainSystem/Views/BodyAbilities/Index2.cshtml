@@ -53,9 +53,11 @@
                     <script type="text/javascript">
 
                     </script>
-                    <div>
-                        <p>系统建议：</p>
-                        <div style="height:116px">
+                    <p>系统建议：</p>
+                    <div id="suggest" style="height:116px">
+                       
+                       
+                        <div >
                         </div>
                     </div>
                 </form>
@@ -166,7 +168,9 @@
                                               data: [@Model.lastlist.bfp,data.bfp]
                                          }]
 
-                                    });
+                                        });
+
+                                           $("#suggest").html(data.ans);
 
 
                                     });
@@ -180,7 +184,23 @@
 
 										    var bfp = (waist * 0.74 - (weight * 0.082 + 44.74)) / weight;
                                             bfp = bfp * 100;
-										    var bmi = 1.0*weight/(height*height);
+                                            var bmi = 1.0 * weight / (height * height);
+
+                                            var a = document.getElementById("suggest");
+                                            a.innerHTML = "";
+                                            if (bfp < 15)
+                                                a.innerHTML += "您的体脂率比较低,建议多摄入脂肪;";
+                                            else if (bfp >= 15 && bfp <= 18)
+                                                a.innerHTML += "您的体脂率正常";
+                                            else
+                                                a.innerHTML += "您的体脂率过高，注意多锻炼";
+
+                                            if (bmi < 18.5)
+                                                a.innerHTML += "您的BMI指数偏低，需要多锻炼身体";
+                                            else if (bmi >= 18.5 && bmi < 23.9)
+                                                a.innerHTML += "您的BMI指数正常";
+                                            else
+                                                a.innerHTML += "您的BMI指数偏高，需要多锻炼";
 
 										     myChart.setOption({
 

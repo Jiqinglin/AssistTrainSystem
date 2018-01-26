@@ -105,7 +105,23 @@ namespace AssistTrainSystem.Controllers
                 await _context.SaveChangesAsync();
 
             result res = new result();
-             res.ans = "加油锻炼";
+
+            //系统建议的代码，仿照这个代码，在别的类中，同样的位置，试着自己编写
+            res.ans = "";
+            if (res.bfp < 15)
+                res.ans += "您的体脂率比较低,建议多摄入脂肪;";
+            else if (res.bfp >= 15 && res.bfp <= 18)
+                res.ans += "您的体脂率正常";
+            else
+                res.ans += "您的体脂率过高，注意多锻炼";
+
+            if (res.bmi < 18.5)
+                res.ans += "您的BMI指数偏低，需要多锻炼身体";
+            else if (res.bmi >= 18.5 && res.bmi < 23.9)
+                res.ans += "您的BMI指数正常";
+            else
+                res.ans += "您的BMI指数偏高，需要多锻炼";
+            
             res.bfp = bodyAbility.bfp;
             res.bmi = bodyAbility.bmi;
             JsonResult result=Json(res);

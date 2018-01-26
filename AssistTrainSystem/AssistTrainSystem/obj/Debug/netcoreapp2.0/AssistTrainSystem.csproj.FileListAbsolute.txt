@@ -51,3 +51,4 @@ C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\Ass
 C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.AssemblyInfo.cs
 C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.dll
 C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.pdb
+C:\Users\coder\Desktop\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\AssistTrainSystem\obj\Debug\netcoreapp2.0\AssistTrainSystem.csprojResolveAssemblyReference.cache

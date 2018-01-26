@@ -63,9 +63,11 @@ namespace AssistTrainSystem.Controllers
         {
             return View();
         }
-        public IActionResult test2()
+        public async Task<IActionResult> test2()
         {
-            return View();
+            var personalPay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+
+            return View(personalPay);
         }
         public IActionResult test3()
         {
