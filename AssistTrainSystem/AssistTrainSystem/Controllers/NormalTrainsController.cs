@@ -122,7 +122,7 @@ namespace AssistTrainSystem.Controllers
             res.abdomen_train = normaltrain.abdomen_train;
             res.arm_train = normaltrain.arm_train;
             res.leg_train = normaltrain.Leg_train;
-            res.shouder_train = normaltrain.shoulder_train;
+            res.shoulder_train = normaltrain.shoulder_train;
             res.stamina_train = normaltrain.stamina_train;
             JsonResult result = Json(res);
 
@@ -182,7 +182,7 @@ namespace AssistTrainSystem.Controllers
             res.chesk_train = normaltrain.chesk_train;
             res.explosive_train = normaltrain.explosive_train;
             res.leg_train = normaltrain.Leg_train;
-            res.shouder_train = normaltrain.shoulder_train;
+            res.shoulder_train = normaltrain.shoulder_train;
             res.stamina_train = normaltrain.stamina_train;
             JsonResult result = Json(res);
 
@@ -199,7 +199,7 @@ namespace AssistTrainSystem.Controllers
             public int leg_train;
             public int abdomen_train;
             public int arm_train;
-            public int shouder_train;
+            public int shoulder_train;
             public int stamina_train;
             public int explosive_train;
         }

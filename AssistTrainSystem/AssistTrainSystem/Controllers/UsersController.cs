@@ -21,6 +21,7 @@ namespace AssistTrainSystem.Controllers
         {
             _context = context;
         }
+        
         [Authorize(Roles = "User")]
         // GET: Users
         public async Task<IActionResult> Index()

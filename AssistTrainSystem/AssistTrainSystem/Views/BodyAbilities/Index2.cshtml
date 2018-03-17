@@ -1,11 +1,11 @@
-﻿@model AssistTrainSystem.Controllers.BodyAbilitiesController.BodyList
+﻿@using Microsoft.AspNetCore.Mvc
+@model AssistTrainSystem.Controllers.BodyAbilitiesController.BodyList
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/LeftMenu.cshtml";
 }
 <script src="~/js/echarts.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-default">
@@ -304,7 +304,7 @@ option = {
             type: 'value',
             name: 'BMI',
             min: 10,
-            max: 90,
+            max: 40,
             position: 'right',
             axisLine: {
                 lineStyle: {
@@ -319,7 +319,7 @@ option = {
             type: 'value',
             name: '体脂率',
             min: 10,
-            max: 90,
+            max: 40,
             position: 'left',
 
             axisLine: {

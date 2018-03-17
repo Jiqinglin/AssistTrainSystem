@@ -16,7 +16,7 @@
     var back_train = 0;
     var chesk_train = 0;
     var leg_train = 0;
-    var shouder_train = 0;
+    var shoulder_train = 0;
     var arm_train = 0;
     var abdomen_train = 0;
     var stamina_train = 0;
@@ -136,10 +136,12 @@
                 <script type="text/javascript">
                        function fun4() {
 
-                           if (shouder_train == 0)
-                               shouder_train = 1;
+                           if (shoulder_train == 0)
+                           {
+                               shoulder_train = 1; 
+                           }
                            else
-                               shouder_train = 0;
+                               shoulder_train = 0;
 
                        }
                 </script>
@@ -280,20 +282,20 @@
                 $.post("/NormalTrains/check", {
                     "user_id": "@User.Identity.Name",
                     "back_train": back_train, "chesk_train": chesk_train, "leg_train": leg_train
-                    , "shouder_train": shouder_train, "arm_train": arm_train, "abdomen_train": abdomen_train,
+                    , "shoulder_train": shoulder_train, "arm_train": arm_train, "abdomen_train": abdomen_train,
                     "stamina_train": stamina_train, "explosive_train": explosive_train
                 }, function (data) {
 
                     $("#back").css('display', 'block')
                     $("#chesk").css('display', 'block')
                     $("#leg").css('display', 'block')
-                    $("#shouder").css('display', 'block')
+                    $("#shoulder").css('display', 'block')
                     $("#arm").css('display', 'block')
                     $("#abdomen").css('display', 'block')
                     $("#explosive").css('display', 'block')
                     $("#stamina").css('display', 'block')
 
-                    var back, chesk, leg, shouder, arm, abdomen, explosive, stamina;
+                    var back, chesk, leg, shoulder, arm, abdomen, explosive, stamina;
                  
                     if (data.back_train < 5) {
                         $("#back").attr('class', 'alert alert-success'); back = "低量";
@@ -334,17 +336,17 @@
                         $("#leg").attr('class', 'alert alert-danger'); leg = "严重过量";
                     }
 
-                    if (data.shouder_train < 5) {
-                        $("#shouder").attr('class', 'alert alert-success'); shouder = "低量";
+                    if (data.shoulder_train < 5) {
+                        $("#shoulder").attr('class', 'alert alert-success'); shoulder = "低量";
                     }
-                    else if (data.shouder_train >= 5 && data.shouder_train < 10) {
-                        $("#shouder").attr('class', 'alert alert-info'); shouder = "适量";
+                    else if (data.shoulder_train >= 5 && data.shoulder_train < 10) {
+                        $("#shoulder").attr('class', 'alert alert-info'); shoulder = "适量";
                     }
-                    else if (data.shouder_train >= 10 && data.shouder_train < 20) {
-                        $("#shouder").attr('class', 'alert alert-warning'); shouder = "过量";
+                    else if (data.shoulder_train >= 10 && data.shoulder_train < 20) {
+                        $("#shoulder").attr('class', 'alert alert-warning'); shoulder = "过量";
                     }
                     else {
-                        $("#shouder").attr('class', 'alert alert-danger'); shouder = "严重过量";
+                        $("#shoulder").attr('class', 'alert alert-danger'); shoulder = "严重过量";
                     }
 
                     if (data.arm_train < 5) {
@@ -404,7 +406,7 @@
                     $("#back").html("你已经连续进行背部训练," + data.back_train + "次             "+back);
                     $("#chesk").html("你已经连续进行胸部训练," + data.chesk_train + "次            "+chesk);
                     $("#leg").html("你已经连续进行腿部训练," + data.leg_train + "次            "+leg);
-                    $("#shouder").html("你已经连续进行肩部训练," + data.shouder_train + "次           "+shouder);
+                    $("#shoulder").html("你已经连续进行肩部训练," + data.shoulder_train + "次           "+shoulder);
                     $("#arm").html("你已经连续进行臂部训练," + data.arm_train + "次           " + arm);
                     $("#abdomen").html("你已经连续进行腹部训练," + data.abdomen_train + "次           " + abdomen);
                     $("#explosive").html("你已经连续进行爆发力训练," + data.explosive_train + "次           " + explosive);
@@ -437,7 +439,7 @@
             <strong>你已经连续进行腿部训练</strong>结果是成功的。
         </div>
 
-        <div id="shouder" class="alert alert-success"  style="display:none">
+        <div id="shoulder" class="alert alert-success"  style="display:none">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>你已经连续进行肩部训练</strong>结果是成功的。
         </div>

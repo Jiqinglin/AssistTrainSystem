@@ -69,7 +69,7 @@ namespace AssistTrainSystem.Controllers
         {
             double income2 = Convert.ToDouble(income);
             Console.WriteLine(income2);
-            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var pay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             string last = pay.create_time.ToString("MM-dd");
 
@@ -104,7 +104,7 @@ namespace AssistTrainSystem.Controllers
         {
 
             double income2 = Convert.ToDouble(income);
-            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var pay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             string last = pay.create_time.ToString("MM-dd");
 
@@ -137,7 +137,7 @@ namespace AssistTrainSystem.Controllers
         public async Task<IActionResult> dinner(string income,string dinner)
         {
             double income2 = Convert.ToDouble(income);
-            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var pay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             string last = pay.create_time.ToString("MM-dd");
 

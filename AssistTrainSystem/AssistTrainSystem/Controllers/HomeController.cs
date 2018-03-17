@@ -77,7 +77,7 @@ namespace AssistTrainSystem.Controllers
         {
 
 
-            var last = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var last = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
             if(last == null||!last.create_time.ToString("MM-dd").Equals(DateTime.Now.ToString("MM-dd")))
             {
 
