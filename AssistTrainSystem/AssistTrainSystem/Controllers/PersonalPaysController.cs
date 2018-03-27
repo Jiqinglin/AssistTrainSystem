@@ -29,7 +29,7 @@ namespace AssistTrainSystem.Controllers
         {
             double outcome2 = Convert.ToDouble(outcome);
          
-            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var pay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
 
             string last = pay.create_time.ToString("MM-dd");
 
@@ -187,7 +187,7 @@ namespace AssistTrainSystem.Controllers
         // GET: PersonalPays/Create
         public async Task<IActionResult> Create()
         {
-            var pay = await _context.PersonalPay.LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
+            var pay = await _context.PersonalPay.OrderBy(m => m.create_time).LastOrDefaultAsync(m => m.user_id == User.Identity.Name);
             return View(pay);
         }
 
